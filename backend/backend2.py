@@ -1,6 +1,11 @@
 import xml.etree.ElementTree as ET
 import poo
 import re
+import os
+
+#Variables globales
+entrada = ""
+salida = ""
 
 
 #Listas globales
@@ -13,6 +18,26 @@ listaFechas = [] #Lista de fechas
 #             Lugar y fecha: (Guatemala),       (01/04/2022)         (15:43)      Usuario: (map0003@usac.edu) Red social:   (Twitter) ([todo el texto])
 patron = r'\s*Lugar\s+y\s+fecha:\s+(\S+),\s*(\d{2}/\d{2}/\d{4})\s+(\d{2}:\d{2})\s+Usuario:\s+(\w+@\w+\.\w+)\s+Red\s+social:\s+(\w+)\s+(.*)'
 
+def limpiar(): #Función para limpiar las listas globales
+    global listaEmpresitas,listaPositivos,listaNegativos,listaMensajes,listaFechas #Variables globales
+    listaEmpresitas.clear() #Limpiamos la lista de empresas
+    listaPositivos.clear() #Limpiamos la lista de palabras positivas
+    listaNegativos.clear() #Limpiamos la lista de palabras negativas
+    listaMensajes.clear() #Limpiamos la lista de mensajes
+    listaFechas.clear() #Limpiamos la lista de fechas
+
+    #Limpiamos el archivo de entrada
+    if os.path.exists("data/archivo.xml"):
+        os.remove("data/archivo.xml")
+    else:
+        print("El archivo no existe")
+
+    #Limpiamos el archivo de salida
+    if os.path.exists("data/salida.xml"):
+        os.remove("data/salida.xml")
+    else:
+        print("La salida no existe")
+
 
 def crearArchivo(entrada): #Función que crea el archivo de entrada
     archivo = open("data/archivo.xml", "w", encoding="utf-8")
@@ -24,11 +49,7 @@ def crearArchivo(entrada): #Función que crea el archivo de entrada
 def procesar():
     global listaEmpresitas,listaPositivos,listaNegativos #Variables globales
 
-    listaEmpresitas.clear() #Limpiamos la lista de empresas
-    listaPositivos.clear() #Limpiamos la lista de palabras positivas
-    listaNegativos.clear() #Limpiamos la lista de palabras negativas
-    listaMensajes.clear() #Limpiamos la lista de mensajes
-    listaFechas.clear() #Limpiamos la lista de fechas
+
     try:
         arbol = ET.parse("data/archivo.xml") #Creamos el arbol
         ramas=arbol.getroot() #Obtenemos la raíz del arbol
@@ -94,6 +115,8 @@ def procesar():
     except Exception as e: #Manejo de excepciones
         return "Error al abrir el archivo", e 
     
+#Quitar a futuro lo de limpiar para mantenerse con el tiempo
+
 #Función para analizar los mensajes, encontrar sentimientos y empresas con sus servicios
 def analizarMensaje(text):
     global listaEmpresitas,listaPositivos,listaNegativos,patron
@@ -361,13 +384,37 @@ def crearArchivoSalida():
     with open(ruta,"wb") as doc:
         salida.write(doc,encoding="utf-8",xml_declaration=True)
 #---------------------------------------------------------------------------------------------------
+#Función para obtener una lista de las fechas disponibles
+def obtenerFechas():
+    global listaFechas
+    lista=[] #Lista de fechas
+    for i in listaFechas: #Iteramos sobre las fechas
+        lista.append(i.fecha) #Agregamos la fecha a la lista de fechas
+    return lista #Retornamos la lista de fechas
 
+#Función para obtener empresas de una fecha
+def obtenerEmpresas(fecha):
+    global listaFechas
+    for i in listaFechas: #Iteramos sobre las fechas
+        if i.fecha==fecha: #Si la fecha es igual a la fecha actual
+            empresas=[] #Lista de empresas
+            for j in i.listaMensajes: #Iteramos sobre los mensajes
+                for k in j.empresas: #Iteramos sobre las empresas de los mensajes
+                    repetido=False #Variable para verificar si la empresa está repetida
 
+                    #Verificación de que no esté repetido el valor
+                    for l in empresas: #Iteramos sobre las empresas
+                        if k.nombre==l: #Si la empresa ya está en la lista
+                            repetido=True #La empresa está repetida
+                    if repetido==False: #Si la empresa no está repetida
+                        empresas.append(k.nombre) #Agregamos la empresa a la lista de empresas
+            return empresas #Retornamos la lista de empresas
 
+#Función para obtener los servicios de una empresa
 
 #dsjfhcdfmlkghdslckgsdhlfkfdlscghkml,cnhdsfckhdkjhgcsdfcnsdfkgvnhdsfnhvkdshcgklsdfhgvnsdkjfnhskdj PROBANDO
 
-'''procesar()'''
+#procesar()
 
 '''for mensaje in listaMensajes:
     print(mensaje.mensaje)
@@ -384,8 +431,10 @@ def crearArchivoSalida():
 '''dividirFechas()
 
 crearArchivoSalida()
-
-i=0'''
+print(obtenerFechas())
+i=0
+print("-------------------")
+print(obtenerEmpresas("05/04/2022"))'''
 '''for mensajes in listaMensajes:
     i=i+1
     print("Mensaje:" + str(i))

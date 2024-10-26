@@ -4,6 +4,7 @@ from flask import redirect
 
 
 
+
 app = Flask(__name__)
 
 
@@ -29,12 +30,40 @@ def subir():
 
         return jsonify({"salida": salida, "contenido": contenido}), 200
     
+@app.route('/reset', methods=['POST'])  # Página de inicio
+def reset():
+    if request.method == "POST":
+        b2.limpiar()
+        return jsonify({"mensaje": "Reset exitoso"}), 200
+
+@app.route('/consulta', methods=['GET'])  # Página de inicio
+def consulta():
+    if request.method == "GET":
+        try:
+            with open("data/salida.xml", "r",encoding="utf-8") as f:
+                salida = f.read()
+            print(salida)
+            return jsonify({"salida": salida}), 200
+        except:
+            return jsonify({"salida": ""}), 200
 
 
+@app.route('/resumenPorFecha', methods=['POST','GET'])  # Página de inicio
+def resumenPorFecha():
+    if request.method == "POST":
+        fechita = request.form["fechita"]
+        print("-----------------------")
+        #print(fechita)
+        empresas=b2.obtenerEmpresas(fechita)
+        #print(empresas)
 
-
-
-
+        return jsonify({"empresas": empresas}), 200
+    
+    
+    print("Hola")
+    fechas=b2.obtenerFechas()
+    #print(fechas)
+    return jsonify({"fechas": fechas}), 200
 
 
 

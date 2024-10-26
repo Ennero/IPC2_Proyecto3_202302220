@@ -36,9 +36,9 @@
         <div class="container-fluid">
             <div class="row w-100">
                 <!-- Columna izquierda con el dropdown -->
-                <div class="col-6 d-flex align-items-center">
+                <div class="col-5 d-flex align-items-center">
                     <div class="dropdown me-2">
-                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Ayuda
                         </button>
@@ -51,21 +51,40 @@
                         <input type="hidden" name="id" value="cargar">
                         <a href="/subir" class="btn btn-outline-light">Cargar Archivo</a>
                     </form>
-                    <form method="POST" class="me-2">
-                        <input type="hidden" name="id" value="peticiones">
-                        <button type="submit" class="btn btn-outline-light">Peticiones</button>
-                    </form>
+                    <div class="dropdown me-2">
+
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Peticiones
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <li><a class="dropdown-item" href="/consulta">Consultar Datos</a></li>
+                            <li><a class="dropdown-item" href="/resumenPorFecha">Resumen de clasificación por fecha</a></li>
+                            <li><a class="dropdown-item" href="/resumenPorRangoTipo">Resumen por rango de fechas</a></li>
+                            <li><a class="dropdown-item" target="/pruebaMensaje">Reporte en PDF</a></li>
+                            <li><a class="dropdown-item" href="/pruebaMensaje">Prueba de mensaje</a></li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <!-- Mensaje centrado "Empresa" -->
+                <div class="col-2 text-center">
+                    {% if mensaje %}
+                    <div class="alert alert-success " role="alert">
+                        {{mensaje}}
+                    </div>
+                    {% endif %}
                 </div>
     
                 <!-- Columna derecha con los formularios -->
-                <div class="col-6 d-flex justify-content-end">
+                <div class="col-5 d-flex justify-content-end">
                     <form method="POST" class="me-2">
                         <input type="hidden" name="id" value="enviar">
                         <button type="submit" class="btn btn-outline-light">Enviar</button>
                     </form>
                     <form method="POST">
-                        <input type="hidden" name="id" value="reset">
-                        <button type="submit" class="btn btn-outline-light">Reset</button>
+                        <input type="hidden" name="reset" value="reset">
+                        <button type="submit" class="btn btn-danger">Reset</button>
                     </form>
                 </div>
             </div>
@@ -82,9 +101,11 @@
                 <div class="card" style="height: 100%;">
                     <div class="card-body text-center">
                         <h1 class="card-title">Entrada</h1>
+                        <div class="overflow-auto border p-3" style="max-height: 535px; background-color: #f8f9fa; width: 38rem;"> <!-- Scrollable area -->
                         <pre>
                             {{ entrada }} <!-- Aquí se mostrará la entrada -->
                         </pre>
+                        </div>
                         
                     </div>
                 </div>
@@ -98,11 +119,11 @@
                 <div class="card" style="height: 100%;">
                     <div class="card-body text-center">
                         <h1 class="card-title">Salida</h1>
-                        
+                        <div class="overflow-auto border p-3" style="max-height: 535px; background-color: #f8f9fa; width: 38rem;"> <!-- Scrollable area -->
                         <pre>
                             {{ salida }} <!-- Aquí se mostrará la entrada -->
                         </pre>
-                        
+                        </div>
                     </div>
                 </div>
             </div>

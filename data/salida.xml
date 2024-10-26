@@ -3,25 +3,93 @@
 	<respuesta>
 		<fecha>01/04/2022</fecha>
 		<mensajes>
-			<total>2</total>
-			<positivos>1</positivos>
-			<negativos>1</negativos>
+			<total>6</total>
+			<positivos>3</positivos>
+			<negativos>3</negativos>
 			<neutros>0</neutros>
 		</mensajes>
 		<analisis>
 			<empresa nombre="USAC">
 				<mensajes>
-					<total>2</total>
-					<positivos>1</positivos>
-					<negativos>1</negativos>
+					<total>6</total>
+					<positivos>3</positivos>
+					<negativos>3</negativos>
 					<neutros>0</neutros>
 				</mensajes>
 				<servicios>
 					<servicio nombre="inscripción">
 						<mensajes>
-							<total>2</total>
-							<positivos>1</positivos>
-							<negativos>1</negativos>
+							<total>6</total>
+							<positivos>3</positivos>
+							<negativos>3</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="asignación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="graduación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="TIGO">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="cobrar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="instalacion">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="arreglar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="USAC">
+				<mensajes>
+					<total>6</total>
+					<positivos>3</positivos>
+					<negativos>3</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="inscripción">
+						<mensajes>
+							<total>6</total>
+							<positivos>3</positivos>
+							<negativos>3</negativos>
 							<neutros>0</neutros>
 						</mensajes>
 					</servicio>
@@ -82,26 +150,26 @@
 	<respuesta>
 		<fecha>05/04/2022</fecha>
 		<mensajes>
-			<total>1</total>
+			<total>3</total>
 			<positivos>0</positivos>
 			<negativos>0</negativos>
-			<neutros>1</neutros>
+			<neutros>3</neutros>
 		</mensajes>
 		<analisis>
 			<empresa nombre="USAC">
 				<mensajes>
-					<total>1</total>
+					<total>3</total>
 					<positivos>0</positivos>
 					<negativos>0</negativos>
-					<neutros>1</neutros>
+					<neutros>3</neutros>
 				</mensajes>
 				<servicios>
 					<servicio nombre="inscripción">
 						<mensajes>
-							<total>1</total>
+							<total>3</total>
 							<positivos>0</positivos>
 							<negativos>0</negativos>
-							<neutros>1</neutros>
+							<neutros>3</neutros>
 						</mensajes>
 					</servicio>
 					<servicio nombre="asignación">
@@ -124,10 +192,78 @@
 			</empresa>
 			<empresa nombre="TIGO">
 				<mensajes>
-					<total>1</total>
+					<total>3</total>
 					<positivos>0</positivos>
 					<negativos>0</negativos>
-					<neutros>1</neutros>
+					<neutros>3</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="cobrar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="instalacion">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="arreglar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="USAC">
+				<mensajes>
+					<total>3</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>3</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="inscripción">
+						<mensajes>
+							<total>3</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>3</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="asignación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="graduación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="TIGO">
+				<mensajes>
+					<total>3</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>3</neutros>
 				</mensajes>
 				<servicios>
 					<servicio nombre="cobrar">
