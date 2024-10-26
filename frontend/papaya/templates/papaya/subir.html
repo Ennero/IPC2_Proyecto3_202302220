@@ -17,6 +17,11 @@
         <div class="card-body">
                 <h3 align="center" style="color: grey;">Carga de Archivos de Entrada</h3> 
         </div>
+        {% if subido %}
+        <div class="alert alert-success" role="alert">
+            Archivo de entrada cargado exitosamente
+        </div>
+        {% endif %}
         <div class="card-body" align="center"   >
             <form method="POST" enctype="multipart/form-data">
 

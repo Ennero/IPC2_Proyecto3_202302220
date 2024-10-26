@@ -19,14 +19,16 @@ def crearArchivo(entrada): #Función que crea el archivo de entrada
     archivo.write(entrada) #Escribimos el contenido del archivo
     archivo.close() #Cerramos el archivo
     return "Archivo creado con éxito" #Retornamos un mensaje de éxito
-
-
-
 #---------------------------------------------------------------------------------------------------
 #Función para procesar el archivo XML de entrada
 def procesar():
     global listaEmpresitas,listaPositivos,listaNegativos #Variables globales
 
+    listaEmpresitas.clear() #Limpiamos la lista de empresas
+    listaPositivos.clear() #Limpiamos la lista de palabras positivas
+    listaNegativos.clear() #Limpiamos la lista de palabras negativas
+    listaMensajes.clear() #Limpiamos la lista de mensajes
+    listaFechas.clear() #Limpiamos la lista de fechas
     try:
         arbol = ET.parse("data/archivo.xml") #Creamos el arbol
         ramas=arbol.getroot() #Obtenemos la raíz del arbol
@@ -365,7 +367,7 @@ def crearArchivoSalida():
 
 #dsjfhcdfmlkghdslckgsdhlfkfdlscghkml,cnhdsfckhdkjhgcsdfcnsdfkgvnhdsfnhvkdshcgklsdfhgvnsdkjfnhskdj PROBANDO
 
-procesar()
+'''procesar()'''
 
 '''for mensaje in listaMensajes:
     print(mensaje.mensaje)
@@ -379,11 +381,11 @@ procesar()
     print(mensaje.positivos)
     print("\n\n\n")'''
 
-dividirFechas()
+'''dividirFechas()
 
 crearArchivoSalida()
 
-i=0
+i=0'''
 '''for mensajes in listaMensajes:
     i=i+1
     print("Mensaje:" + str(i))

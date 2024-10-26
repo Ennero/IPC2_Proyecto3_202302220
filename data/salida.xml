@@ -132,10 +132,10 @@
 				<servicios>
 					<servicio nombre="cobrar">
 						<mensajes>
-							<total>1</total>
+							<total>0</total>
 							<positivos>0</positivos>
 							<negativos>0</negativos>
-							<neutros>1</neutros>
+							<neutros>0</neutros>
 						</mensajes>
 					</servicio>
 					<servicio nombre="instalacion">
