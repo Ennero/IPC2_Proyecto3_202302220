@@ -2,81 +2,64 @@
 <solicitud_clasificacion>
     <diccionario>
         <sentimientos_positivos>
+            <palabra>agradable</palabra>
             <palabra>bueno</palabra>
-            <palabra>bonito</palabra>
-            <palabra>excelente</palabra>
-            <palabra>cool</palabra>
-            <palabra>satisfecho</palabra>
-            <palabra>tuanis</palabra>
-            <palabra>claro</palabra>
+            <palabra>genial</palabra>
+            <palabra>feliz</palabra>
+            <palabra>fabuloso</palabra>
         </sentimientos_positivos>
         <sentimientos_negativos>
+            <palabra>terrible</palabra>
+            <palabra>lamentable</palabra>
             <palabra>malo</palabra>
-            <palabra>pésimo</palabra>
-            <palabra>triste</palabra>
-            <palabra>molesto</palabra>
-            <palabra>decepcionado</palabra>
+            <palabra>horrible</palabra>
+            <palabra>aburrido</palabra>
         </sentimientos_negativos>
         <empresas_analizar>
             <empresa>
                 <nombre>USAC</nombre>
-                <servicio nombre="inscripción">
-                    <alias> inscribí </alias>
-                    <alias> inscrito </alias>
-                    <alias> inscribes </alias>
-                    <alias> inscribes </alias>
-                    <alias> inscriben </alias>
-                    <alias> inscribiré </alias>
-                </servicio>
-                <servicio nombre="asignación">
-                    <alias> asignado </alias>
-                    <alias> asignar </alias>
-                    <alias> asignas </alias>
-                    <alias> asignan </alias>
-                </servicio>
-                <servicio nombre="graduación">
-                    <alias> graduar </alias>
-                    <alias> graduaré </alias>
-                </servicio>
+                <servicios>
+                    <servicio nombre="biblioteca">
+                        <alias> libros </alias>
+                        <alias> préstamos </alias>
+                        <alias> lectura </alias>
+                    </servicio>
+                    <servicio nombre="registro">
+                        <alias> registro </alias>
+                        <alias> inscritos </alias>
+                        <alias> inscribir </alias>
+                    </servicio>
+                </servicios>
             </empresa>
             <empresa>
-                <nombre>TIGO</nombre>
-                <servicio nombre="cobrar">
-                    <alias> cobro </alias>
-                    <alias> cobraron </alias>
-                </servicio>
-                <servicio nombre="instalacion">
-                    <alias> instalado </alias>
-                    <alias> instalas </alias>
-                    <alias> instalé </alias>
-                </servicio>
-                <servicio nombre="arreglar">
-                    <alias> arreglaron </alias>
-                    <alias> arreglo </alias>
-                    <alias> arregle </alias>
-                </servicio>
+                <nombre>Claro</nombre>
+                <servicios>
+                    <servicio nombre="factura">
+                        <alias> cobro </alias>
+                        <alias> cobros </alias>
+                        <alias> pagar </alias>
+                    </servicio>
+                    <servicio nombre="servicio_cliente">
+                        <alias> soporte </alias>
+                        <alias> ayuda </alias>
+                        <alias> atención </alias>
+                    </servicio>
+                </servicios>
             </empresa>
         </empresas_analizar>
     </diccionario>
     <lista_mensajes>
         <mensaje>
-            Lugar y fecha: Guatemala, 01/04/2022 15:01 Usuario:
-            map0001@usac.edu Red social: Twitter
-            El servicio en la USAC para inscripción fue muy bueno y me siento muy satisfecho.
+            Lugar y fecha: Guatemala, 01/05/2022 10:15 Usuario: usuario01@usac.edu.gt Red social: Twitter
+            La biblioteca de la USAC es genial, tienen una amplia variedad de libros y el personal es muy agradable.
         </mensaje>
         <mensaje>
-            Lugar y fecha: Guatemala,
-            01/04/2022 15:20 Usuario: map0002@usac.edu Red social: Facebook Hoy me inscribí
-            en la USAC, no encontré parqueo e inicié molesto mi gestión, luego tuve que hacer
-            cola y me indicaron que era la cola incorrecta, esto me enojó mucho y mejor me
-            fui.
+            Lugar y fecha: Guatemala, 01/05/2022 11:30 Usuario: usuario02@usac.edu.gt Red social: Facebook
+            El servicio de registro de la USAC es terrible, siempre hay largas filas y es lamentable la organización.
         </mensaje>
         <mensaje>
-            Lugar y fecha: Guatemala, 05/04/2022 15:43 Usuario: map0003@usac.edu
-            Red social: WhatsApp
-            Ya estoy inscrito en la USAC y TIGO, el proceso fue muy bueno, pero al salir,
-            mi carro tenía pinchadas las llantas, esto me preocupó
-            y me fui decepcionado.
+            Lugar y fecha: Guatemala, 01/05/2022 15:00 Usuario: usuario03@usac.edu.gt Red social: WhatsApp
+            Claro me cobró de más en mi última factura, no es justo, terrible experiencia con el servicio al cliente.
         </mensaje>
     </lista_mensajes>
 </solicitud_clasificacion>

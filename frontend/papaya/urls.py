@@ -12,7 +12,7 @@ urlpatterns = [
     path("info", views.info, name="info"),
     path("consulta", views.consulta, name="consulta"),
     path("resumenPorFecha", views.resumenPorFecha, name="resumenPorFecha"),
-    path("resumenPorRangoTipo", views.resumenPorTipo, name="resumenPorTipo"),
+    path("resumenPorRangoTipo", views.resumenPorRangoTipo, name="resumenPorRangoTipo"),
     path("pruebaMensaje", views.pruebaMensaje, name="pruebaMensaje"),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

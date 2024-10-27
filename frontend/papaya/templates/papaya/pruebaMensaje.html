@@ -60,13 +60,15 @@
                         <p>
                             Si no suba aquí el archivo y nos ahorramos lo anterior  :)
                         </p>
+                        <form method="POST" enctype="multipart/form-data">
                         <div class="input-group mb-3">
                             <input type="file" name="archivo" accept=".xml" class="form-control" id="inputGroupFile02" aria-describedby="inputGroupFileAddon03" aria-label="Upload" required>
                             <button class="btn btn-outline-success" type="submit" id="inputGroupFileAddon03">Subir</button>
                         </div>
-                        <div class="overflow-auto border p-3" style="max-height: 535px; background-color: #f8f9fa; width: 79rem;"> <!-- Scrollable area -->
+                        </form>
+                        <div class="overflow-auto border p-3" style="max-height: 400px; background-color: #f8f9fa; width: 79rem;"> <!-- Scrollable area -->
                         <pre>
-                            {{ salida }} <!-- Aquí se mostrará la entrada -->
+                            {{ salidita }} <!-- Aquí se mostrará la entrada -->
                         </pre>
                         </div>
                     </div>

@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<solicitud_clasificacion>
+    <diccionario>
+        <sentimientos_positivos>
+            <palabra>bueno</palabra>
+            <palabra>bonito</palabra>
+            <palabra>excelente</palabra>
+            <palabra>cool</palabra>
+            <palabra>satisfecho</palabra>
+            <palabra>tuanis</palabra>
+            <palabra>claro</palabra>
+            <palabra>genial</palabra>
+            <palabra>maravilloso</palabra>
+            <palabra>feliz</palabra>
+            <palabra>agradable</palabra>
+        </sentimientos_positivos>
+        <sentimientos_negativos>
+            <palabra>malo</palabra>
+            <palabra>pésimo</palabra>
+            <palabra>triste</palabra>
+            <palabra>molesto</palabra>
+            <palabra>decepcionado</palabra>
+            <palabra>horrible</palabra>
+            <palabra>frustrante</palabra>
+            <palabra>terrible</palabra>
+            <palabra>lamentable</palabra>
+            <palabra>desagradable</palabra>
+        </sentimientos_negativos>
+        <empresas_analizar>
+            <empresa>
+                <nombre>USAC</nombre>
+                <servicio nombre="inscripción">
+                    <alias>inscribí</alias>
+                    <alias>inscrito</alias>
+                    <alias>inscribes</alias>
+                    <alias>inscriben</alias>
+                    <alias>inscribiré</alias>
+                </servicio>
+                <servicio nombre="asignación">
+                    <alias>asignado</alias>
+                    <alias>asignar</alias>
+                    <alias>asignas</alias>
+                    <alias>asignan</alias>
+                </servicio>
+                <servicio nombre="graduación">
+                    <alias>graduar</alias>
+                    <alias>graduaré</alias>
+                </servicio>
+            </empresa>
+            <empresa>
+                <nombre>TIGO</nombre>
+                <servicio nombre="cobrar">
+                    <alias>cobro</alias>
+                    <alias>cobraron</alias>
+                </servicio>
+                <servicio nombre="instalacion">
+                    <alias>instalado</alias>
+                    <alias>instalas</alias>
+                    <alias>instalé</alias>
+                </servicio>
+                <servicio nombre="arreglar">
+                    <alias>arreglaron</alias>
+                    <alias>arreglo</alias>
+                    <alias>arreglé</alias>
+                </servicio>
+            </empresa>
+            <empresa>
+                <nombre>Claro</nombre>
+                <servicio nombre="reclamo">
+                    <alias>reclamar</alias>
+                    <alias>reclamé</alias>
+                    <alias>reclamación</alias>
+                </servicio>
+                <servicio nombre="soporte técnico">
+                    <alias>soporte</alias>
+                    <alias>arreglo</alias>
+                    <alias>solucionar</alias>
+                </servicio>
+                <servicio nombre="facturación">
+                    <alias>factura</alias>
+                    <alias>facturación</alias>
+                    <alias>facturado</alias>
+                </servicio>
+            </empresa>
+            <empresa>
+                <nombre>Banco Industrial</nombre>
+                <servicio nombre="préstamo">
+                    <alias>préstamo</alias>
+                    <alias>solicitar préstamo</alias>
+                    <alias>crédito</alias>
+                </servicio>
+                <servicio nombre="transferencia">
+                    <alias>transferencia</alias>
+                    <alias>transferir</alias>
+                </servicio>
+                <servicio nombre="tarjeta de crédito">
+                    <alias>tarjeta</alias>
+                    <alias>crédito</alias>
+                    <alias>tarjeta de crédito</alias>
+                </servicio>
+            </empresa>
+        </empresas_analizar>
+    </diccionario>
+    <lista_mensajes>
+        <mensaje>
+            Lugar y fecha: Guatemala, 01/04/2022 15:01 Usuario: map0001@usac.edu Red social: Twitter
+            El servicio en la USAC para inscripción fue muy bueno y me siento muy satisfecho.
+        </mensaje>
+        <mensaje>
+            Lugar y fecha: Guatemala, 01/04/2022 15:20 Usuario: map0002@usac.edu Red social: Facebook
+            Hoy me inscribí en la USAC, no encontré parqueo e inicié molesto mi gestión, luego tuve que hacer
+            cola y me indicaron que era la cola incorrecta, esto me enojó mucho y mejor me fui.
+        </mensaje>
+        <mensaje>
+            Lugar y fecha: Guatemala, 05/04/2022 15:43 Usuario: map0003@usac.edu Red social: WhatsApp
+            Ya estoy inscrito en la USAC y TIGO, el proceso fue muy bueno, pero al salir,
+            mi carro tenía pinchadas las llantas, esto me preocupó y me fui decepcionado.
+        </mensaje>
+        <mensaje>
+            Lugar y fecha: Ciudad de Guatemala, 10/05/2022 10:25 Usuario: usuario123@claro.com Red social: Facebook
+            El soporte técnico de Claro fue excelente, resolvieron mi problema rápidamente. Estoy satisfecho.
+        </mensaje>
+        <mensaje>
+            Lugar y fecha: Guatemala, 12/05/2022 11:50 Usuario: cliente@banco.com Red social: Twitter
+            Hice una transferencia en Banco Industrial y el servicio fue muy bueno, pero me cobraron una comisión alta, lo cual me decepcionó.
+        </mensaje>
+        <mensaje>
+            Lugar y fecha: Mixco, 15/06/2022 08:30 Usuario: jorgep@tigo.com Red social: Instagram
+            La instalación de internet fue rápida, pero el técnico llegó tarde, lo cual fue un poco frustrante.
+        </mensaje>
+        <mensaje>
+            Lugar y fecha: Guatemala, 18/06/2022 09:15 Usuario: maria@claro.com Red social: WhatsApp
+            La atención en Claro es maravillosa. Muy felices con el servicio, el técnico fue muy amable.
+        </mensaje>
+        <mensaje>
+            Lugar y fecha: Villa Nueva, 20/06/2022 14:05 Usuario: jose@bi.com Red social: Facebook
+            Pedí un préstamo en Banco Industrial, el trámite fue lento y decepcionante. Me cobraron por cosas que no entendí.
+        </mensaje>
+        <mensaje>
+            Lugar y fecha: Guatemala, 22/06/2022 16:40 Usuario: cliente@bi.com Red social: LinkedIn
+            Solicité una tarjeta de crédito en Banco Industrial y fue una experiencia agradable. Me explicaron todo de manera clara.
+        </mensaje>
+        <mensaje>
+            Lugar y fecha: Guatemala, 25/06/2022 17:00 Usuario: pedro@tigo.com Red social: Twitter
+            Arreglaron mi línea en TIGO, el técnico fue puntual y resolvieron rápido el problema, excelente servicio.
+        </mensaje>
+    </lista_mensajes>
+</solicitud_clasificacion>

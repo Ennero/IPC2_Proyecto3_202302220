@@ -10,25 +10,17 @@ app = Flask(__name__)
 
 @app.route('/subir', methods=['POST'])  # Página de inicio
 def subir():
-    if request.method == "POST":
-        archivo = request.files["archivo"]
-        contenido=archivo.read().decode("utf-8")
+    if request.method == "POST": # Si se envía un POST
+        archivo = request.files["archivo"] #Obtengo el archivo
+        contenido=archivo.read().decode("utf-8") #Obtengo el contenido del archivo en formato string
 
         #Procesando el archivo
-        print(b2.crearArchivo(contenido))
+        print(b2.crearArchivo(contenido)) #Creo el archivo de entrada e imprimo el retorno
 
-        print(contenido)
+        print(contenido) #Imprimo el contenido del archivo para ver si se envió bien
         print("Eso fue el contenido")
-        b2.procesar()
-        b2.dividirFechas()
-        b2.crearArchivoSalida()
-
-        with open("data/salida.xml", "r",encoding="utf-8") as f:
-            salida = f.read()
-
-        #print(contenido)
-
-        return jsonify({"salida": salida, "contenido": contenido}), 200
+        
+        return jsonify({"contenido": contenido}), 200
     
 @app.route('/reset', methods=['POST'])  # Página de inicio
 def reset():
@@ -69,7 +61,7 @@ def resumenPorFecha():
 @app.route('/graficaTodo', methods=['POST','GET'])  # Página de inicio
 def graficaTodo():
     if request.method == "POST":
-        fechita = request.form["fechita"]
+        fechita = request.form["fechita"] #Obtiene la fecha en forma de string
         print("-----------------------")
         #print(fechita)
         todo=b2.obtenerTodoFecha(fechita)
@@ -85,8 +77,8 @@ def graficaTodo():
 @app.route('/graficaEmpresa', methods=['POST','GET'])  # Página de inicio
 def graficaEmpresa():
     if request.method == "POST":
-        empresa = request.form["empresa"]
-        fechita = request.form["fechita"]
+        empresa = request.form["empresa"] #Obtiene la empresa en forma de string
+        fechita = request.form["fechita"] #Obtiene la fecha en forma de string
         print("-----------------------")
         #print(fechita)
         todo=b2.obtenerEmpresaEspecifica(fechita,empresa)
@@ -102,16 +94,30 @@ def graficaEmpresa():
 @app.route('/prueba', methods=['POST','GET'])  # Página de inicio   
 def prueba():
     if request.method == "POST":
-        print("Hola")
 
-        archivo = request.form["archivo"]
+        archivo = request.files["archivo"]
         mensaje=archivo.read().decode("utf-8")
         
+        respuesta=b2.prueba(mensaje)
 
 
-        return jsonify({"mensaje": "Hola"}), 200
+        return jsonify({"mensaje": respuesta}), 200
 
+#Dirección para procesar los datos
+@app.route('/procesar')
+def procesar():
 
+    b2.procesar() #Proceso el archivo
+    b2.dividirFechas() #Divido todo lo procesado en las fechas
+    b2.crearArchivoSalida() #Creo el archivo de salida
+
+    with open("data/salida.xml", "r",encoding="utf-8") as f:
+        salida = f.read() #Obtengo el contenido del archivo de salida
+
+    #print(contenido)
+
+    #Retorno la salida y el contenido del archivo
+    return jsonify({"salida": salida, "mensaje":"Envio exitosa"}), 200
 
 
 if __name__ == '__main__':

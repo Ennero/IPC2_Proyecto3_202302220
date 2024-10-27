@@ -55,6 +55,7 @@
                     <div class="card-body text-center">
                         <h4 class="card-title">Ingrese</h4>
                         <form method="POST">
+                            <p>De la fecha:</p>
                         <select class="form-select" id="fecha" name="fecha" onchange="this.form.submit()" {% if fechita %} disabled {% endif %}>
                             {% if fechita %}
                             <option selected>{{ fechita }}</option>

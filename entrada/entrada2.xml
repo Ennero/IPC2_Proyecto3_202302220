@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<solicitud_clasificacion>
+    <diccionario>
+        <sentimientos_positivos>
+            <palabra>maravilloso</palabra>
+            <palabra>excelente</palabra>
+            <palabra>agradable</palabra>
+            <palabra>eficiente</palabra>
+            <palabra>rápido</palabra>
+        </sentimientos_positivos>
+        <sentimientos_negativos>
+            <palabra>lento</palabra>
+            <palabra>desorganizado</palabra>
+            <palabra>malo</palabra>
+            <palabra>desagradable</palabra>
+            <palabra>ineficiente</palabra>
+        </sentimientos_negativos>
+        <empresas_analizar>
+            <empresa>
+                <nombre>Movistar</nombre>
+                <servicios>
+                    <servicio nombre="recarga">
+                        <alias> cargar </alias>
+                        <alias> recargué </alias>
+                        <alias> saldo </alias>
+                    </servicio>
+                    <servicio nombre="internet">
+                        <alias> conexión </alias>
+                        <alias> datos </alias>
+                        <alias> wifi </alias>
+                    </servicio>
+                </servicios>
+            </empresa>
+            <empresa>
+                <nombre>Banco Industrial</nombre>
+                <servicios>
+                    <servicio nombre="transferencia">
+                        <alias> transferir </alias>
+                        <alias> envío </alias>
+                        <alias> mandar </alias>
+                    </servicio>
+                    <servicio nombre="préstamo">
+                        <alias> crédito </alias>
+                        <alias> dinero </alias>
+                        <alias> efectivo </alias>
+                    </servicio>
+                </servicios>
+            </empresa>
+        </empresas_analizar>
+    </diccionario>
+    <lista_mensajes>
+        <mensaje>
+            Lugar y fecha: Guatemala, 10/06/2022 09:45 Usuario: cliente01@movistar.com Red social: Instagram
+            La recarga de Movistar fue rápida y eficiente, estoy satisfecho con el servicio.
+        </mensaje>
+        <mensaje>
+            Lugar y fecha: Guatemala, 10/06/2022 10:50 Usuario: cliente02@bi.com.gt Red social: Facebook
+            Banco Industrial tiene un sistema muy desorganizado, transferí dinero y el servicio fue lento.
+        </mensaje>
+        <mensaje>
+            Lugar y fecha: Guatemala, 10/06/2022 11:15 Usuario: cliente03@movistar.com Red social: WhatsApp
+            Necesito más datos de Movistar porque la conexión a internet es muy mala y se cae constantemente.
+        </mensaje>
+    </lista_mensajes>
+</solicitud_clasificacion>

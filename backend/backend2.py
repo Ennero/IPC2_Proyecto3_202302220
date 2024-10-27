@@ -480,7 +480,7 @@ def prueba(mensaje):
         raiz = ET.Element("Respuesta")  # Se crea la raíz del árbol
         fecha=ET.SubElement(raiz,"fecha") #Creamos la rama fecha
         fecha.text=mensajito.fecha #Agregamos la fecha a la rama fecha
-        redSocial=ET.SubElement(raiz,"redSocial") #Creamos la rama redSocial
+        redSocial=ET.SubElement(raiz,"red_social") #Creamos la rama redSocial
         redSocial.text=mensajito.redSocial #Agregamos la red social a la rama redSocial
         usuario=ET.SubElement(raiz,"usuario") #Creamos la rama usuario
         usuario.text=mensajito.usuario #Agregamos el usuario a la rama usuario
@@ -491,8 +491,9 @@ def prueba(mensaje):
             empresaR=ET.SubElement(empresas,"empresa",nombre=empresa.nombre)
             servicios=ET.SubElement(empresaR,"servicios")
             for servicio in empresa.servicios: #Iteramos sobre los servicios
-                servicioR=ET.SubElement(servicios,"servicio")
-                servicioR.text=str(servicio.nombre) #Agregamos el nombre del servicio a la rama servicio
+                if servicio.cantidad>0: #Si la cantidad de mensajes del servicio es mayor a 0    
+                    servicioR=ET.SubElement(servicios,"servicio")
+                    servicioR.text=str(servicio.nombre) #Agregamos el nombre del servicio a la rama servicio
         #Creamos las ramas de palabras positivas y negativas
 
         palabrasPositivas=ET.SubElement(raiz,"palabras_positivas") #Creamos la rama palabrasPositivas
@@ -517,7 +518,7 @@ def prueba(mensaje):
         salida=ET.tostring(raiz,encoding="utf-8",xml_declaration=True).decode("utf-8")
         indent(raiz) #Indentamos el archivo
         return salida #Retornamos el árbol de salida
-
+#Retorna una cadena
 
 
 #dsjfhcdfmlkghdslckgsdhlfkfdlscghkml,cnhdsfckhdkjhgcsdfcnsdfkgvnhdsfnhvkdshcgklsdfhgvnsdkjfnhskdj PROBANDO
