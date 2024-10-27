@@ -6,6 +6,10 @@ from django.views.decorators.csrf import csrf_exempt
 #Declaro algunas variables globales
 entrada = ""
 salida = ""
+fechita = ""
+empresas=[]
+todo=False
+
 
 #Esta es para la página de subir
 @csrf_exempt
@@ -65,11 +69,13 @@ def consulta(request):
 
 @csrf_exempt
 def resumenPorFecha(request):
+    global fechita,empresas,todo
 
     if request.method == "POST":
 
         #Si lo que se envió fue la fecha
         if request.POST.get("fecha"):
+            todo=False
 
             fechita = request.POST.get("fecha")
             response = requests.post("http://127.0.0.1:5000/resumenPorFecha",data={'fechita': fechita}) #Envio la fecha a la API
@@ -79,6 +85,23 @@ def resumenPorFecha(request):
             empresas = response.json()["empresas"] #Obtengo la respuesta de la API
             return render(request,"papaya/resumenPorFecha.html",{"fechita":fechita,"empresas":empresas})
         
+        if request.POST.get("todo"):
+
+            response = requests.post("http://127.0.0.1:5000/graficaTodo",data={'fechita': fechita}) #Envio la fecha a la API
+            data=response.json()["todo"]
+
+            print(data)
+            todo=True
+
+            #print(valores,label)
+            return render(request,'papaya/resumenPorFecha.html',{
+                'fechita':fechita,'empresas':empresas,'data':data})
+
+        
+
+
+        
+
         if request.POST.get("empresa"):
 
             tipo = request.POST.get("empresa")

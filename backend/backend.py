@@ -66,6 +66,25 @@ def resumenPorFecha():
     return jsonify({"fechas": fechas}), 200
 
 
+@app.route('/graficaTodo', methods=['POST','GET'])  # Página de inicio
+def graficaTodo():
+    if request.method == "POST":
+        fechita = request.form["fechita"]
+        print("-----------------------")
+        #print(fechita)
+        todo=b2.obtenerTodoFecha(fechita)
+        #print(todo)
+
+        return jsonify({"todo": todo}), 200
+    
+    
+    print("Hola")
+    fechas=b2.obtenerFechas()
+    #print(fechas)
+    return jsonify({"fechas": fechas}), 200
+
+
+
 
 
 if __name__ == '__main__':

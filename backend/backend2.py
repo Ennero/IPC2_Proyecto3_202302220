@@ -410,6 +410,33 @@ def obtenerEmpresas(fecha):
                         empresas.append(k.nombre) #Agregamos la empresa a la lista de empresas
             return empresas #Retornamos la lista de empresas
 
+
+def obtenerTodoFecha(fecha): #Función para obtener los mensajes de una fecha
+    global listaFechas
+    for i in listaFechas: #Iteramos sobre las fechas
+        if i.fecha==fecha: #Si la fecha es igual a la fecha actual
+
+            cuentaMensajes=0 #Contador de mensajes
+            cuentaMensajesPositivos=0 #Contador de mensajes positivos
+            cuentaMensajesNegativos=0 #Contador de mensajes negativos
+            cuentaMensajesNeutros=0 #Contador de mensajes neutrales
+
+        #ciclo para crear la rama mensajes
+            for mensaje in i.listaMensajes: #Creamos la rama mensaje
+                cuentaMensajes+=1 #Sumamos al contador de mensajes
+                if mensaje.positivos>mensaje.negativos: #Si el mensaje es positivo
+                    cuentaMensajesPositivos+=1 #Sumamos al contador de mensajes positivos
+                elif mensaje.negativos>mensaje.positivos: #Si el mensaje es negativo
+                    cuentaMensajesNegativos+=1 #Sumamos al contador de mensajes negativos
+                else: #Si el mensaje es neutral
+                    cuentaMensajesNeutros+=1 #Sumamos al contador de mensajes neutrales
+    valores=[cuentaMensajes,cuentaMensajesPositivos,cuentaMensajesNegativos,cuentaMensajesNeutros]
+
+    return valores #Retornamos la lista de empresas
+
+
+
+
 #Función para obtener los servicios de una empresa
 
 #dsjfhcdfmlkghdslckgsdhlfkfdlscghkml,cnhdsfckhdkjhgcsdfcnsdfkgvnhdsfnhvkdshcgklsdfhgvnsdkjfnhskdj PROBANDO
