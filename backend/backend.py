@@ -77,12 +77,39 @@ def graficaTodo():
 
         return jsonify({"todo": todo}), 200
     
-    
-    print("Hola")
+    #print("Hola")
     fechas=b2.obtenerFechas()
     #print(fechas)
     return jsonify({"fechas": fechas}), 200
 
+@app.route('/graficaEmpresa', methods=['POST','GET'])  # Página de inicio
+def graficaEmpresa():
+    if request.method == "POST":
+        empresa = request.form["empresa"]
+        fechita = request.form["fechita"]
+        print("-----------------------")
+        #print(fechita)
+        todo=b2.obtenerEmpresaEspecifica(fechita,empresa)
+        #print(todo)
+
+        return jsonify({"todo": todo}), 200
+    
+    #print("Hola")
+    empresas=b2.obtenerEmpresas()
+    #print(fechas)
+    return jsonify({"empresas": empresas}), 200
+
+@app.route('/prueba', methods=['POST','GET'])  # Página de inicio   
+def prueba():
+    if request.method == "POST":
+        print("Hola")
+
+        archivo = request.form["archivo"]
+        mensaje=archivo.read().decode("utf-8")
+        
+
+
+        return jsonify({"mensaje": "Hola"}), 200
 
 
 

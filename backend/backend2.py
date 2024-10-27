@@ -410,8 +410,8 @@ def obtenerEmpresas(fecha):
                         empresas.append(k.nombre) #Agregamos la empresa a la lista de empresas
             return empresas #Retornamos la lista de empresas
 
-
-def obtenerTodoFecha(fecha): #Función para obtener los mensajes de una fecha
+#Función para obtener la lista de los mensajes de una fech
+def obtenerTodoFecha(fecha):
     global listaFechas
     for i in listaFechas: #Iteramos sobre las fechas
         if i.fecha==fecha: #Si la fecha es igual a la fecha actual
@@ -434,14 +434,95 @@ def obtenerTodoFecha(fecha): #Función para obtener los mensajes de una fecha
 
     return valores #Retornamos la lista de empresas
 
+#Función para obtener los mensajes de una empresa específica
+def obtenerEmpresaEspecifica(fecha,empresa): 
+    global listaFechas,listaEmpresitas,listaMensajes
+    for i in listaFechas: #Iteramos sobre las fechas
+        if i.fecha==fecha: #Si la fecha es igual a la fecha actual
+
+            for j in listaEmpresitas: #Iteramos sobre los mensajes
+
+                #Inicializamos los contadores
+                cuentaMensajes=0 #Contador de mensajes
+                cuentaMensajesPositivos=0 #Contador de mensajes positivos
+                cuentaMensajesNegativos=0 #Contador de mensajes negativos
+                cuentaMensajesNeutros=0 #Contador de mensajes neutrales
+
+                for mensajeL in listaMensajes: #Iteramos sobre los mensajes
+                    if (mensajeL.fecha==fecha): #Si la fecha del mensaje es igual a la fecha actual
+                        for empresaMensaje in mensajeL.empresas: #Iteramos sobre las empresas de los mensajes
+
+                            if empresaMensaje.nombre==empresa: #Si la empresa del mensaje es igual a la empresa actual
+                                
+                                cuentaMensajes+=1 #Sumamos al contador de mensajes
+                                if mensajeL.positivos>mensajeL.negativos: #Si el mensaje es positivo
+                                    cuentaMensajesPositivos+=1 #Sumamos al contador de mensajes positivos
+                                elif mensajeL.negativos>mensajeL.positivos: #Si el mensaje es negativo
+                                    cuentaMensajesNegativos+=1 #Sumamos al contador de mensajes negativos
+                                else: #Si el mensaje es neutral
+                                    cuentaMensajesNeutros+=1 #Sumamos al contador de mensajes neutrales
+    #Creamos una lista con los valores de la cuenta de los mensajes
+    valores=[cuentaMensajes,cuentaMensajesPositivos,cuentaMensajesNegativos,cuentaMensajesNeutros]
+
+    return valores #Retornamos la lista con la cuenta de los mensajes
 
 
+#Función para el mensaje de prueba
+def prueba(mensaje):
 
-#Función para obtener los servicios de una empresa
+    
+        arbol = ET.ElementTree(ET.fromstring(mensaje))  # Se lee el contenido XML desde una cadena
+        raiz = arbol.getroot()  # Se obtiene la raíz del árbol
+        texto = raiz.text  # Se obtiene el texto del mensaje
+        mensajito = analizarMensaje(texto)  # Se analiza el mensaje con la subrutina analizarMensaje
+        
+        #Ahora uso la una nueva estructura con ET para crear una salida con solo este mensaje
+        raiz = ET.Element("Respuesta")  # Se crea la raíz del árbol
+        fecha=ET.SubElement(raiz,"fecha") #Creamos la rama fecha
+        fecha.text=mensajito.fecha #Agregamos la fecha a la rama fecha
+        redSocial=ET.SubElement(raiz,"redSocial") #Creamos la rama redSocial
+        redSocial.text=mensajito.redSocial #Agregamos la red social a la rama redSocial
+        usuario=ET.SubElement(raiz,"usuario") #Creamos la rama usuario
+        usuario.text=mensajito.usuario #Agregamos el usuario a la rama usuario
+
+        #Ciclo para crear la rama empresas
+        empresas=ET.SubElement(raiz,"empresas")
+        for empresa in mensajito.empresas: #Iteramos sobre las empresas
+            empresaR=ET.SubElement(empresas,"empresa",nombre=empresa.nombre)
+            servicios=ET.SubElement(empresaR,"servicios")
+            for servicio in empresa.servicios: #Iteramos sobre los servicios
+                servicioR=ET.SubElement(servicios,"servicio")
+                servicioR.text=str(servicio.nombre) #Agregamos el nombre del servicio a la rama servicio
+        #Creamos las ramas de palabras positivas y negativas
+
+        palabrasPositivas=ET.SubElement(raiz,"palabras_positivas") #Creamos la rama palabrasPositivas
+        palabrasPositivas.text=str(mensajito.positivos) #Agregamos las palabras positivas a la rama palabrasPositivas
+        palabrasNegativas=ET.SubElement(raiz,"palabras_negativas") #Creamos la rama palabrasNegativas
+        palabrasNegativas.text=str(mensajito.negativos) #Agregamos las palabras negativas a la rama palabrasNegativas
+
+        total=mensajito.positivos+mensajito.negativos #Sumamos las palabras positivas y negativas
+        if total==0: total=1 #Si el total es 0, entonces el total es 1
+
+        #Creamos las ramas de sentimientos positivos y negativos
+        print(mensajito.positivos)
+        print(total)
+
+        sentimientosPostivos=ET.SubElement(raiz,"sentimientos_positivos") #Creamos la rama sentimientosPositivos
+        sentimientosPostivos.text=str(round((mensajito.positivos/total)*100))+"%" #Agregamos los sentimientos positivos a la rama sentimientosPositivos
+        sentimientosNegativos=ET.SubElement(raiz,"sentimientos_negativos") #Creamos la rama sentimientosNegativos
+        sentimientosNegativos.text=str(round((mensajito.negativos/total)*100))+"%" #Agregamos los sentimientos negativos a la rama sentimientosNegativos
+
+        #Creamos el árbol de salida en string
+        indent(raiz) #Indentamos el archivo
+        salida=ET.tostring(raiz,encoding="utf-8",xml_declaration=True).decode("utf-8")
+        indent(raiz) #Indentamos el archivo
+        return salida #Retornamos el árbol de salida
+
+
 
 #dsjfhcdfmlkghdslckgsdhlfkfdlscghkml,cnhdsfckhdkjhgcsdfcnsdfkgvnhdsfnhvkdshcgklsdfhgvnsdkjfnhskdj PROBANDO
 
-#procesar()
+'''procesar()'''
 
 '''for mensaje in listaMensajes:
     print(mensaje.mensaje)
@@ -461,7 +542,7 @@ crearArchivoSalida()
 print(obtenerFechas())
 i=0
 print("-------------------")
-print(obtenerEmpresas("05/04/2022"))'''
+print(obtenerEmpresaEspecifica("01/04/2022","USAC"))'''
 '''for mensajes in listaMensajes:
     i=i+1
     print("Mensaje:" + str(i))
@@ -472,6 +553,14 @@ print(obtenerEmpresas("05/04/2022"))'''
             print(servicios.cantidad)
 '''
 
-
+"""print(prueba('''<?xml version="1.0" encoding="UTF-8"?>
+<mensaje>
+    Lugar y fecha: Guatemala,
+    01/04/2022 15:20 Usuario: map0002@usac.edu Red social: Facebook Hoy me inscribí
+    en la USAC, no encontré parqueo e inicié molesto mi gestión, luego tuve que hacer
+    cola y me indicaron que era la cola incorrecta, esto me enojó mucho y mejor me
+    fui.
+</mensaje>
+'''))"""
 
 

@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from papaya import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
 
@@ -13,4 +15,4 @@ urlpatterns = [
     path("resumenPorRangoTipo", views.resumenPorTipo, name="resumenPorTipo"),
     path("pruebaMensaje", views.pruebaMensaje, name="pruebaMensaje"),
 
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

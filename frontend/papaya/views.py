@@ -8,8 +8,9 @@ entrada = ""
 salida = ""
 fechita = ""
 empresas=[]
-todo=False
 
+#para la empresa específica
+empresa=""
 
 #Esta es para la página de subir
 @csrf_exempt
@@ -17,9 +18,6 @@ def Paula(request):
     global entrada,salida
     if request.method == "POST":
 
-
-
-        
         archivo = request.FILES["archivo"] #Obtengo el archivo
 
         response = requests.post('http://127.0.0.1:5000/subir', files={'archivo': (archivo.name,archivo,archivo.content_type)}) #Envio el archivo a la API
@@ -57,6 +55,7 @@ def peticiones(request):
     #El predefinido siempres será get
     return render(request,"papaya/peticiones.html",{"entrada":entrada,"salida":salida})
 
+#Esta es para la página de consulta en la base de datos
 @csrf_exempt
 def consulta(request):
     salida = ""
@@ -67,9 +66,10 @@ def consulta(request):
     print(salida)
     return render(request,"papaya/consulta.html",{"salida":salida})
 
+#Función para el resumen por fecha
 @csrf_exempt
 def resumenPorFecha(request):
-    global fechita,empresas,todo
+    global fechita,empresas,empresa
 
     if request.method == "POST":
 
@@ -91,20 +91,21 @@ def resumenPorFecha(request):
             data=response.json()["todo"]
 
             print(data)
-            todo=True
 
             #print(valores,label)
             return render(request,'papaya/resumenPorFecha.html',{
                 'fechita':fechita,'empresas':empresas,'data':data})
 
-        
-
-
-        
-
         if request.POST.get("empresa"):
 
-            tipo = request.POST.get("empresa")
+            print("----------------------------------")
+            empresa = request.POST.get("empresa")
+            response=requests.post("http://127.0.0.1:5000/graficaEmpresa",data={'fechita': fechita, 'empresa':empresa}) #Envio la fecha a la API
+
+            data=response.json()["todo"]
+            print(data)
+            return render(request,'papaya/resumenPorFecha.html',{
+                'fechita':fechita,'empresas':empresas,'data':data})
 
     response = requests.get('http://127.0.0.1:5000/resumenPorFecha') #Consulto a la API
 
@@ -113,10 +114,26 @@ def resumenPorFecha(request):
 
 @csrf_exempt
 def resumenPorTipo(request):
+
+
+
+
+
     return render(request,"papaya/resumenPorTipo.html")
 
+#Esta es la página para realizar al prueba de mensaje
 @csrf_exempt
 def pruebaMensaje(request):
+
+    if request.method == "POST":
+        archivo = request.FILES["archivo"] #Obtengo el archivo
+
+        response = requests.post('http://127.0.0.1:5000/prueba', files={'archivo': (archivo.name,archivo,archivo.content_type)}) #Envio el archivo a la API
+
+
+
+
+
     return render(request,"papaya/pruebaMensaje.html")
 
 

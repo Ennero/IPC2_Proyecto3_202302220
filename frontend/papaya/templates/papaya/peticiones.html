@@ -44,7 +44,8 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="/info">Información del estudiante</a></li>
-                            <li><a class="dropdown-item" target="_blank">Documentación</a></li>
+                            {% load static %}
+                            <li><a class="dropdown-item" href="{% static 'papaya/ensayo.pdf' %}" target="_blank">Documentación</a></li>
                         </ul>
                     </div>
                     <form method="POST" class="me-2">
