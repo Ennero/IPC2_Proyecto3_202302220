@@ -3,6 +3,8 @@ import poo
 import re
 import os
 import unicodedata
+from datetime import datetime
+
 
 #Variables globales
 entrada = ""
@@ -125,7 +127,7 @@ def procesar():
         return "Error al abrir el archivo", e 
     
 #Quitar a futuro lo de limpiar para mantenerse con el tiempo
-
+#---------------------------------------------------------------------------------------------------
 #Función para normalizar las vocales por todas las posibles opciones
 def normalizar_vocales(palabra):
     palabra = re.sub(r'[aA]', r'[aáAÁ]', palabra)
@@ -138,7 +140,7 @@ def normalizar_vocales(palabra):
 #Función para quitar las tildes
 def quitar_tildes(palabra):
     return ''.join((c for c in unicodedata.normalize('NFD', palabra) if unicodedata.category(c) != 'Mn'))
-
+#---------------------------------------------------------------------------------------------------
 
 #Función para analizar los mensajes, encontrar sentimientos y empresas con sus servicios
 def analizarMensaje(text):
@@ -260,7 +262,7 @@ def analizarMensaje(text):
 def dividirFechas():
     global listaMensajes,listaFechas
 
-    print(len(listaMensajes))
+    #print(len(listaMensajes))
     for i in listaMensajes: #Iteramos sobre los mensajes
         fecha=i.fecha #Obtenemos la fecha del mensaje
         repetido=False #Variable para verificar si la fecha está repetida
@@ -437,6 +439,44 @@ def obtenerFechas():
         lista.append(i.fecha) #Agregamos la fecha a la lista de fechas
     return lista #Retornamos la lista de fechas
 
+def obtenerFechas2(fecha):
+    global listaFechas
+    fechita=datetime.strptime(str(fecha),"%d/%m/%Y").date()
+    lista=[] #Lista de fechas
+    for i in listaFechas: #Iteramos sobre las fechas
+        fechatemp=datetime.strptime(i.fecha,"%d/%m/%Y").date()
+        if fechatemp>fechita:
+            lista.append(i.fecha) #Agregamos la fecha a la lista de fechas
+    return lista #Retornamos la lista de fechas
+
+def obtenerEmpresasEnRango(fecha1,fecha2):
+    global listaFechas
+    fechita1=datetime.strptime(fecha1,"%d/%m/%Y").date()
+    fechita2=datetime.strptime(fecha2,"%d/%m/%Y").date()
+    empresas=[] #Lista de empresas
+    for i in listaFechas: #Iteramos sobre las fechas
+        fechatemp=datetime.strptime(i.fecha,"%d/%m/%Y").date()
+        if fechatemp>=fechita1 and fechatemp<=fechita2: #Si la fecha está en el rango
+
+            #print("pasó")
+
+            for j in i.listaMensajes: #Iteramos sobre los mensajes
+                for k in j.empresas: #Iteramos sobre las empresas de los mensajes
+                    repetido=False #Variable para verificar si la empresa está repetida
+
+                    #print("empresa: ",k.nombre)
+
+                    #Verificación de que no esté repetido el valor
+                    for l in empresas: #Iteramos sobre las empresas
+                        if k.nombre==l: #Si la empresa ya está en la lista
+                            repetido=True #La empresa está repetida
+                    if repetido==False: #Si la empresa no está repetida
+                        empresas.append(k.nombre) #Agregamos la empresa a la lista de empresas
+                        #print("agregó",k.nombre)    
+
+    return empresas #Retornamos la lista
+
+
 #Función para obtener empresas de una fecha
 def obtenerEmpresas(fecha):
     global listaFechas
@@ -455,7 +495,45 @@ def obtenerEmpresas(fecha):
                         empresas.append(k.nombre) #Agregamos la empresa a la lista de empresas
             return empresas #Retornamos la lista de empresas
 
-#Función para obtener la lista de los mensajes de una fech
+#Función para obtener una lista con una lista de fechas por cada fecha dentro del rango
+def obtenerEmpresaEspecificaEnRango1(fecha1,fecha2,empresa):
+    global listaFechas,listaMensajes
+    fechita1=datetime.strptime(fecha1,"%d/%m/%Y").date()
+    fechita2=datetime.strptime(fecha2,"%d/%m/%Y").date()
+    lista=[] #Lista de los positivos y negativos
+    for i in listaFechas: #Iteramos sobre las fechas
+        fechatemp=datetime.strptime(i.fecha,"%d/%m/%Y").date()
+        if fechatemp>=fechita1 and fechatemp<=fechita2: #Si la fecha está en el rango
+                
+            sentimientosPositivos=0 #Contador de sentimientos positivos
+            sentimientosNegativos=0 #Contador de sentimientos negativos
+            sentimientosNeutros=0 #Contador de sentimientos neutros
+            totalMensajes=0 #Contador de mensajes
+
+            for mensaje in listaMensajes: #Iteramos sobre los mensajes
+
+                if mensaje.fecha==i.fecha: #Si la fecha del mensaje es igual a la fecha actual
+                    for empresaMensaje in mensaje.empresas: #Iteramos sobre las empresas de los mensajes
+                        if empresaMensaje.nombre==empresa:
+
+                            totalMensajes+=1 #Sumamos al contador de mensajes
+                            if mensaje.positivos>mensaje.negativos: #Si el mensaje es positivo
+                                sentimientosPositivos+=1 #Sumamos al contador de sentimientos positivos
+                            elif mensaje.negativos>mensaje.positivos: #Si el mensaje es negativo
+                                sentimientosNegativos+=1 #Sumamos al contador de sentimientos negativos
+                            else: #Si el mensaje es neutral
+                                sentimientosNeutros+=1 #Sumamos al contador de sentimientos neutros
+                            
+            listaSentimientos=[totalMensajes,sentimientosPositivos,sentimientosNegativos,sentimientosNeutros] #Lista de los positivos y negativos
+            lista.append(listaSentimientos) #Agregamos la fecha a la lista de fechas
+
+    #print("Lo que salio del backend2",lista)
+
+
+    return lista #Retornamos la lista de fechas
+
+
+#Función para obtener la lista de los mensajes de una fecha
 def obtenerTodoFecha(fecha):
     global listaFechas
     for i in listaFechas: #Iteramos sobre las fechas

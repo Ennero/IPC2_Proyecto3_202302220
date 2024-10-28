@@ -56,9 +56,9 @@
                         <h4 class="card-title">Ingrese</h4>
                         <form method="POST">
                             <p>De la fecha:</p>
-                        <select class="form-select" id="fecha" name="fecha" onchange="this.form.submit()" {% if fechita %} disabled {% endif %}>
-                            {% if fechita %}
-                            <option selected>{{ fechita }}</option>
+                        <select class="form-select" id="fecha1" name="fecha1" onchange="this.form.submit()" {% if fecha1 %} disabled {% endif %}>
+                            {% if fecha1 %}
+                            <option selected>{{ fecha1 }}</option>
                             {% else %}
                             <option selected>Seleccione una fecha</option>
                             {% for fecha in fechas %}
@@ -69,7 +69,34 @@
                         </select>
                         </form>
 
-                        {% if fechita %}
+                        <br>
+                    {% if aviso %}
+                    <div class="alert alert-danger" role="alert">
+                        {{aviso}}
+                    </div>
+                    {% else %}
+                        {% if fecha1 %}
+                        
+                        <form method="POST">
+                            <p>Hasta la fecha:</p>
+                        <select class="form-select" id="fecha2" name="fecha2" onchange="this.form.submit()" {% if fecha2 %} disabled {% endif %}>
+                            {% if fecha2 %}
+                            <option selected >{{ fecha2 }}</option>
+                            {% else %}
+                            <option selected>Seleccione una fecha</option>
+                            {% for fechinta in fechas2 %}
+                            <option value="{{ fechinta }}">{{ fechinta }}</option>
+                            {% endfor %}
+
+                            {% endif %}
+                        </select>
+                        </form>
+                        {% endif %}
+                    {% endif %}
+
+
+
+                        {% if fecha2 %}
                         <br>
                         <form method="POST">
                             <input type="hidden" name="todo" value="todo">
@@ -77,19 +104,20 @@
                         </form>
                         <br>
                         <form method="POST">
-                        <select class="form-select" id="empresa" name="empresa" onchange="this.form.submit()" {% if empresita %} disabled {% endif %}>
-                            {% if empresita %}
-                            <option selected >{{ fechita }}</option>
+                        <select class="form-select" id="empresa" name="empresa" onchange="this.form.submit()" {% if empresa %} disabled {% endif %}>
+                            {% if empresa %}
+                            <option selected >{{ empresa }}</option>
                             {% else %}
                             <option selected>Seleccione una empresa</option>
-                            {% for empresa in empresas %}
-                            <option value="{{ empresa }}">{{ empresa }}</option>
+                            {% for empresita in empresasR %}
+                            <option value="{{ empresita }}">{{ empresita }}</option>
                             {% endfor %}
 
                             {% endif %}
                         </select>
                         </form>
                         {% endif %}
+
                     </div>
                 </div>
             </div> 
@@ -99,47 +127,56 @@
             <div class="col-md-9">
                 <div class="card" style="height: 100%;">
                     <div class="card-body text-center">
-                        <h1 class="card-title">Gráfica</h1>
-                        <canvas id="miGrafica" style="max-width: 1000px; max-height: 800px;"></canvas>
-                        <script>
-                            // Definimos las etiquetas y valores directamente en JavaScript
-                            const etiquetas = ["Total", "Positivos", "Negativos", "Neutros"];
-                            const valores = {{data|safe}};
-                    
-                            // Configuración de la gráfica
-                            const ctx = document.getElementById('miGrafica').getContext('2d');
-                            new Chart(ctx, {
-                                type: 'bar', // Tipo de gráfica
-                                data: {
-                                    labels: etiquetas, // Etiquetas en el eje X
-                                    datasets: [{
-                                        label: 'Cantidad',
-                                        data: valores, // Datos en el eje Y
-                                        backgroundColor: [
-                                            'rgba(54, 162, 235, 0.8)', // Azul para "Total"
-                                            'rgba(75, 192, 192, 0.8)', // Verde para "Positivos"
-                                            'rgba(255, 99, 132, 0.8)', // Rojo para "Negativos"
-                                            'rgba(201, 203, 207, 0.8)'  // Gris para "Neutros"
-                                        ],
-                                        borderColor: [
-                                            'rgba(54, 162, 235, 0.8)', // Azul para "Total"
-                                            'rgba(75, 192, 192, 0.8)', // Verde para "Positivos"
-                                            'rgba(255, 99, 132, 0.8)', // Rojo para "Negativos"
-                                            'rgba(201, 203, 207, 0.8)'  // Gris para "Neutros"
-                                        ],
-                                        borderWidth: 1
-                                    }]
-                                },
-                                options: {
-                                    responsive: true,
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true
-                                        }
-                                    }
-                                }
-                            });
-                        </script>
+                        
+                        <div class="overflow-auto border p-3" style="max-height: 535px; background-color: #f8f9fa; width: 38rem;"> <!-- Scrollable area -->
+                            {% for nombre, datito in data %}
+                                <h1 class="card-title">{{ nombre }}</h1>
+                                <canvas id="grafica_{{nombre}}" style="max-width: 1000px; max-height: 800px;"></canvas>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        // Definimos las etiquetas y valores directamente en JavaScript
+                                        const etiquetas = ["Total", "Positivos", "Negativos", "Neutros"];
+                                        const valores = {{ datito|safe }};
+                        
+                                        // Configuración de la gráfica
+                                        const ctx = document.getElementById('grafica_{{nombre}}').getContext('2d');
+                                        new Chart(ctx, {
+                                            type: 'bar', // Tipo de gráfica
+                                            data: {
+                                                labels: etiquetas, // Etiquetas en el eje X
+                                                datasets: [{
+                                                    label: 'Cantidad',
+                                                    data: valores, // Datos en el eje Y
+                                                    backgroundColor: [
+                                                        'rgba(54, 162, 235, 0.8)', // Azul para "Total"
+                                                        'rgba(75, 192, 192, 0.8)', // Verde para "Positivos"
+                                                        'rgba(255, 99, 132, 0.8)', // Rojo para "Negativos"
+                                                        'rgba(201, 203, 207, 0.8)'  // Gris para "Neutros"
+                                                    ],
+                                                    borderColor: [
+                                                        'rgba(54, 162, 235, 0.8)', // Azul para "Total"
+                                                        'rgba(75, 192, 192, 0.8)', // Verde para "Positivos"
+                                                        'rgba(255, 99, 132, 0.8)', // Rojo para "Negativos"
+                                                        'rgba(201, 203, 207, 0.8)'  // Gris para "Neutros"
+                                                    ],
+                                                    borderWidth: 1
+                                                }]
+                                            },
+                                            options: {
+                                                responsive: true,
+                                                scales: {
+                                                    y: {
+                                                        beginAtZero: true
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    });
+                                </script>
+                            {% endfor %}
+                        </div>
+                        
+
                     </div>
                 </div>
             </div>

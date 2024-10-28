@@ -115,10 +115,56 @@ def prueba():
 
         return jsonify({"mensaje": respuesta}), 200
 #---------------------------------------------------------------------------------
+@app.route('/fecha1', methods=['POST','GET'])  # Página de inicio
+def fecha1():
+    if request.method == "POST":
+        fecha1 = request.form["fecha1"]
+        #print("-----------------------")
+        #print(fecha1)
+        fechas2=b2.obtenerFechas2(fecha1)
+        return jsonify({"fechas2": fechas2}), 200
+
+@app.route('/fecha2', methods=['POST','GET'])  # Página de inicio
+def fecha2():
+    if request.method == "POST":
+        fecha2 = request.form["fecha2"]
+        fecha1 = request.form["fecha1"]
+        print("-----------------------")
+        empresasR=b2.obtenerEmpresasEnRango(fecha1,fecha2)
+        #print("En el backend : ",fecha1,fecha2,empresasR)
+
+        return jsonify({"empresasR": empresasR}), 200
+    
+#En contrucciondkfnaskldflksdcfmlkadskfasmdklfjadsklkfjsjdfsdfsdf
+@app.route('/graficaTodoEnRango', methods=['POST','GET'])  # Página de inicio
+def graficaTodoEnRango():
+    if request.method == "POST":
+        fechita = request.form["fechita"]
+        print("-----------------------")
+        #print(fechita)
+        todo=b2.obtenerTodoEnRango(fechita)
+        #print(todo)
+
+        return jsonify({"todo": todo}), 200
+    
+@app.route('/graficaEmpresaEnRango1', methods=['POST','GET']) 
+def graficaEmpresaEnRango1():
+    if request.method == "POST":
+        empresa = request.form["empresa"]
+        fecha1 = request.form["fecha1"]
+        fecha2 = request.form["fecha2"]
+        #print("Proviniente del frontend")
+        #print(empresa,fecha1,fecha2)
+        #print("-----------------------")
+        #print(fechita)
+        todo=b2.obtenerEmpresaEspecificaEnRango1(fecha1,fecha2,empresa)
+        print("lo que llegó al backend",todo)
+
+        return jsonify({"todo": todo}), 200
 
 
 
-
+# Página de inicio
 
 if __name__ == '__main__':
     app.run(debug=True)

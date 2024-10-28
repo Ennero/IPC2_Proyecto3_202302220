@@ -12,6 +12,15 @@ empresas=[]
 #para la empresa específica
 empresa=""
 
+#Variables temporales para el rango
+entradaR=""
+salidaR=""
+fecha1=""
+fecha2=""
+empresasR=[]
+fechas2=[]
+
+
 #Esta es para la página de subir
 @csrf_exempt
 def Paula(request):
@@ -132,12 +141,82 @@ def resumenPorFecha(request):
 
 @csrf_exempt
 def resumenPorRangoTipo(request):
+    global entradaR,salidaR,fecha2,fecha1,empresasR,fechas2
+
+    if request.method == "POST": #Si se envió un POST
+        #Si lo que se envió fue la fecha
+        if request.POST.get("fecha1"):
+            fecha1 = request.POST.get("fecha1") #Obtengo la fecha1
+
+            #Envio la fecha a la API
+            response = requests.post('http://127.0.0.1:5000/fecha1',data={'fecha1': fecha1})
+
+            fechas2 = response.json()["fechas2"] #Obtengo la fecha2 de la API
+
+            #print(fecha1,fechas2)
+
+            if len(fechas2)==0:
+                return render(request,"papaya/resumenPorRangoTipo.html",{"fecha1":fecha1,"aviso":"No hay fechas disponibles"})
+
+            #Retorno la plantilla con la fecha y las fechas2
+            return render(request,"papaya/resumenPorRangoTipo.html",{"fecha1":fecha1,"fechas2":fechas2})
+        
+        #Si lo que se envió fue la segunda fecha
+        if request.POST.get("fecha2"):
+            fecha2 = request.POST.get("fecha2") #Obtengo la fecha2
+
+            #Envio la fecha a la API
+            response = requests.post('http://127.0.0.1:5000/fecha2',data={'fecha2': fecha2,'fecha1':fecha1})
+
+            empresasR = response.json()["empresasR"] #Obtengo las empresas de la API
+
+            print(fecha1,fecha2,empresasR)
+            #Retorno la plantilla con la fecha1, la fecha2 y las empresas
+            return render(request,"papaya/resumenPorRangoTipo.html",{"fecha1":fecha1,"fecha2":fecha2,"empresasR":empresasR})
+
+        #Si lo que se envió fue la señal de que se quiere ver todo
+        if request.POST.get("todo"):
+
+            #Envio la fecha a la API
+            response = requests.post("http://127.0.0.1:5000/graficaTodoEnRango",data={'fechita': fechita}) #Envio la fecha a la API
+            data=response.json()["todo"] #Obtengo la respuesta de la API
+
+            print(data)
+
+            #print(valores,label)
+            return render(request,'papaya/resumenPorFecha.html',{
+                'fechita':fechita,'empresas':empresas,'data':data})
+
+        if request.POST.get("empresa"):
+            
+            empresa = request.POST.get("empresa") #Obtengo la empresa
+            fechonas=fechas2
+            fechonas.insert(0,fecha1)
+
+            #Verificar lo nombres de lo que coloque en empresaR
+            response=requests.post("http://127.0.0.1:5000/graficaEmpresaEnRango1",data={'fecha1': fecha1, 'fecha2':fecha2,'empresa':empresa})
+            data=response.json()["todo"]
+            print("lo del frontend",data)
+            dupla=list(zip(fechonas,data))
+            
+            
+            #Lo que obtengo de la dupla
+            print(dupla)
+
+            return render(request,'papaya/resumenPorRangoTipo.html',{'fecha1':fecha1,'fecha2':fecha2,'empresa':empresa,'data':dupla,'fechonas':fechonas})
 
 
 
 
+    #Si no se envió un POST solicita las fechas [PARECE ERRROR PERO NO LO ES XD]
+    response = requests.get('http://127.0.0.1:5000/resumenPorFecha') #Consulto a la API
 
-    return render(request,"papaya/resumenPorRangoTipo.html")
+    fechas = response.json()["fechas"]#Obtengo las fechas
+
+    #print(fechas)
+    return render(request,"papaya/resumenPorRangoTipo.html",{"fechas":fechas})
+
+
 
 #Esta es la página para realizar al prueba de mensaje
 @csrf_exempt
