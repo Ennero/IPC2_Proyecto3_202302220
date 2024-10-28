@@ -26,7 +26,6 @@ def Paula(request):
         entrada = archivo.read().decode("utf-8")
 
         print(entrada)
-        salida = response.json()["salida"] #Obtengo la respuesta de la API
         entrada = response.json()["contenido"] #Obtengo la respuesta de con el mismo contenido que se envió xd (aquí consumiendo recursos a lo loco)
         print("---------------------------------------------------")    
         #print(salida) #Imprimo la respuesta de la API
@@ -54,11 +53,11 @@ def peticiones(request):
             response = requests.post('http://127.0.0.1:5000/reset', files={'archivo': "reset"}) #Envio el archivo a la API
             return render(request,"papaya/peticiones.html",{"entrada":entrada,"salida":salida,"mensaje":response.json()["mensaje"]})
 
-        if request.POST.get("subir"): #Verifica si se envió el valor de 'subir'
+        if request.POST.get("enviar"): #Verifica si se envió el valor de 'subir'
 
             response = requests.get('http://127.0.0.1:5000/procesar') #Consulto a la API
-            
 
+            salida = response.json()["salida"] #Obtengo la respuesta de la API            
             return render(request,"papaya/peticiones.html",{"entrada":entrada,"salida":salida,"mensaje":response.json()["mensaje"]})
 
     #El predefinido siempres será get

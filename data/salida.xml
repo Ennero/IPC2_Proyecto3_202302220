@@ -77,6 +77,74 @@
 					</servicio>
 				</servicios>
 			</empresa>
+			<empresa nombre="Claro">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="reclamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="soporte técnico">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="facturación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Banco Industrial">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="préstamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="transferencia">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="tarjeta de crédito">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
 		</analisis>
 	</respuesta>
 	<respuesta>
@@ -84,23 +152,170 @@
 		<mensajes>
 			<total>1</total>
 			<positivos>0</positivos>
-			<negativos>1</negativos>
-			<neutros>0</neutros>
+			<negativos>0</negativos>
+			<neutros>1</neutros>
 		</mensajes>
 		<analisis>
 			<empresa nombre="USAC">
 				<mensajes>
 					<total>1</total>
 					<positivos>0</positivos>
-					<negativos>1</negativos>
-					<neutros>0</neutros>
+					<negativos>0</negativos>
+					<neutros>1</neutros>
 				</mensajes>
 				<servicios>
 					<servicio nombre="inscripción">
 						<mensajes>
 							<total>1</total>
 							<positivos>0</positivos>
-							<negativos>1</negativos>
+							<negativos>0</negativos>
+							<neutros>1</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="asignación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="graduación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="TIGO">
+				<mensajes>
+					<total>1</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>1</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="cobrar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="instalacion">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="arreglar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Claro">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="reclamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="soporte técnico">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="facturación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Banco Industrial">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="préstamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="transferencia">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="tarjeta de crédito">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+		</analisis>
+	</respuesta>
+	<respuesta>
+		<fecha>10/05/2022</fecha>
+		<mensajes>
+			<total>1</total>
+			<positivos>1</positivos>
+			<negativos>0</negativos>
+			<neutros>0</neutros>
+		</mensajes>
+		<analisis>
+			<empresa nombre="USAC">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="inscripción">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
 							<neutros>0</neutros>
 						</mensajes>
 					</servicio>
@@ -147,6 +362,956 @@
 						</mensajes>
 					</servicio>
 					<servicio nombre="arreglar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Claro">
+				<mensajes>
+					<total>1</total>
+					<positivos>1</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="reclamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="soporte técnico">
+						<mensajes>
+							<total>1</total>
+							<positivos>1</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="facturación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Banco Industrial">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="préstamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="transferencia">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="tarjeta de crédito">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+		</analisis>
+	</respuesta>
+	<respuesta>
+		<fecha>12/05/2022</fecha>
+		<mensajes>
+			<total>1</total>
+			<positivos>1</positivos>
+			<negativos>0</negativos>
+			<neutros>0</neutros>
+		</mensajes>
+		<analisis>
+			<empresa nombre="USAC">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="inscripción">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="asignación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="graduación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="TIGO">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="cobrar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="instalacion">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="arreglar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Claro">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="reclamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="soporte técnico">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="facturación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Banco Industrial">
+				<mensajes>
+					<total>1</total>
+					<positivos>1</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="préstamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="transferencia">
+						<mensajes>
+							<total>1</total>
+							<positivos>1</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="tarjeta de crédito">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+		</analisis>
+	</respuesta>
+	<respuesta>
+		<fecha>15/06/2022</fecha>
+		<mensajes>
+			<total>1</total>
+			<positivos>0</positivos>
+			<negativos>1</negativos>
+			<neutros>0</neutros>
+		</mensajes>
+		<analisis>
+			<empresa nombre="USAC">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="inscripción">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="asignación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="graduación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="TIGO">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="cobrar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="instalacion">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="arreglar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Claro">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="reclamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="soporte técnico">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="facturación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Banco Industrial">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="préstamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="transferencia">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="tarjeta de crédito">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+		</analisis>
+	</respuesta>
+	<respuesta>
+		<fecha>18/06/2022</fecha>
+		<mensajes>
+			<total>1</total>
+			<positivos>1</positivos>
+			<negativos>0</negativos>
+			<neutros>0</neutros>
+		</mensajes>
+		<analisis>
+			<empresa nombre="USAC">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="inscripción">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="asignación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="graduación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="TIGO">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="cobrar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="instalacion">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="arreglar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Claro">
+				<mensajes>
+					<total>1</total>
+					<positivos>1</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="reclamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="soporte técnico">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="facturación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Banco Industrial">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="préstamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="transferencia">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="tarjeta de crédito">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+		</analisis>
+	</respuesta>
+	<respuesta>
+		<fecha>20/06/2022</fecha>
+		<mensajes>
+			<total>1</total>
+			<positivos>0</positivos>
+			<negativos>0</negativos>
+			<neutros>1</neutros>
+		</mensajes>
+		<analisis>
+			<empresa nombre="USAC">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="inscripción">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="asignación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="graduación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="TIGO">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="cobrar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="instalacion">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="arreglar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Claro">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="reclamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="soporte técnico">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="facturación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Banco Industrial">
+				<mensajes>
+					<total>1</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>1</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="préstamo">
+						<mensajes>
+							<total>1</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>1</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="transferencia">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="tarjeta de crédito">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+		</analisis>
+	</respuesta>
+	<respuesta>
+		<fecha>22/06/2022</fecha>
+		<mensajes>
+			<total>1</total>
+			<positivos>1</positivos>
+			<negativos>0</negativos>
+			<neutros>0</neutros>
+		</mensajes>
+		<analisis>
+			<empresa nombre="USAC">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="inscripción">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="asignación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="graduación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="TIGO">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="cobrar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="instalacion">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="arreglar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Claro">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="reclamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="soporte técnico">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="facturación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Banco Industrial">
+				<mensajes>
+					<total>1</total>
+					<positivos>1</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="préstamo">
+						<mensajes>
+							<total>1</total>
+							<positivos>1</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="transferencia">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="tarjeta de crédito">
+						<mensajes>
+							<total>1</total>
+							<positivos>1</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+		</analisis>
+	</respuesta>
+	<respuesta>
+		<fecha>25/06/2022</fecha>
+		<mensajes>
+			<total>1</total>
+			<positivos>1</positivos>
+			<negativos>0</negativos>
+			<neutros>0</neutros>
+		</mensajes>
+		<analisis>
+			<empresa nombre="USAC">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="inscripción">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="asignación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="graduación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="TIGO">
+				<mensajes>
+					<total>1</total>
+					<positivos>1</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="cobrar">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="instalacion">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="arreglar">
+						<mensajes>
+							<total>1</total>
+							<positivos>1</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Claro">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="reclamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="soporte técnico">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="facturación">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+				</servicios>
+			</empresa>
+			<empresa nombre="Banco Industrial">
+				<mensajes>
+					<total>0</total>
+					<positivos>0</positivos>
+					<negativos>0</negativos>
+					<neutros>0</neutros>
+				</mensajes>
+				<servicios>
+					<servicio nombre="préstamo">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="transferencia">
+						<mensajes>
+							<total>0</total>
+							<positivos>0</positivos>
+							<negativos>0</negativos>
+							<neutros>0</neutros>
+						</mensajes>
+					</servicio>
+					<servicio nombre="tarjeta de crédito">
 						<mensajes>
 							<total>0</total>
 							<positivos>0</positivos>

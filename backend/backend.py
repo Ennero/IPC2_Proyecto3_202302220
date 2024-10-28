@@ -7,7 +7,7 @@ from flask import redirect
 
 app = Flask(__name__)
 
-
+#---------------------------------------------------------------------------------
 @app.route('/subir', methods=['POST'])  # Página de inicio
 def subir():
     if request.method == "POST": # Si se envía un POST
@@ -17,17 +17,32 @@ def subir():
         #Procesando el archivo
         print(b2.crearArchivo(contenido)) #Creo el archivo de entrada e imprimo el retorno
 
-        print(contenido) #Imprimo el contenido del archivo para ver si se envió bien
-        print("Eso fue el contenido")
+        #print(contenido) #Imprimo el contenido del archivo para ver si se envió bien
+        #print("Eso fue el contenido")
         
         return jsonify({"contenido": contenido}), 200
-    
+#---------------------------------------------------------------------------------
 @app.route('/reset', methods=['POST'])  # Página de inicio
 def reset():
     if request.method == "POST":
         b2.limpiar()
         return jsonify({"mensaje": "Reset exitoso"}), 200
+    
+@app.route('/procesar')#Dirección para procesar los datos
+def procesar():
 
+    b2.procesar() #Proceso el archivo
+    b2.dividirFechas() #Divido todo lo procesado en las fechas
+    b2.crearArchivoSalida() #Creo el archivo de salida
+
+    with open("data/salida.xml", "r",encoding="utf-8") as f:
+        salida = f.read() #Obtengo el contenido del archivo de salida
+
+    #print(salida)
+
+    #Retorno la salida y el contenido del archivo
+    return jsonify({"salida": salida, "mensaje":"Procesado exitoso"}), 200
+#---------------------------------------------------------------------------------
 @app.route('/consulta', methods=['GET'])  # Página de inicio
 def consulta():
     if request.method == "GET":
@@ -38,8 +53,7 @@ def consulta():
             return jsonify({"salida": salida}), 200
         except:
             return jsonify({"salida": ""}), 200
-
-
+#---------------------------------------------------------------------------------
 @app.route('/resumenPorFecha', methods=['POST','GET'])  # Página de inicio
 def resumenPorFecha():
     if request.method == "POST":
@@ -52,11 +66,10 @@ def resumenPorFecha():
         return jsonify({"empresas": empresas}), 200
     
     
-    print("Hola")
+    #print("Hola")
     fechas=b2.obtenerFechas()
     #print(fechas)
     return jsonify({"fechas": fechas}), 200
-
 
 @app.route('/graficaTodo', methods=['POST','GET'])  # Página de inicio
 def graficaTodo():
@@ -90,7 +103,7 @@ def graficaEmpresa():
     empresas=b2.obtenerEmpresas()
     #print(fechas)
     return jsonify({"empresas": empresas}), 200
-
+#---------------------------------------------------------------------------------
 @app.route('/prueba', methods=['POST','GET'])  # Página de inicio   
 def prueba():
     if request.method == "POST":
@@ -100,24 +113,11 @@ def prueba():
         
         respuesta=b2.prueba(mensaje)
 
-
         return jsonify({"mensaje": respuesta}), 200
+#---------------------------------------------------------------------------------
 
-#Dirección para procesar los datos
-@app.route('/procesar')
-def procesar():
 
-    b2.procesar() #Proceso el archivo
-    b2.dividirFechas() #Divido todo lo procesado en las fechas
-    b2.crearArchivoSalida() #Creo el archivo de salida
 
-    with open("data/salida.xml", "r",encoding="utf-8") as f:
-        salida = f.read() #Obtengo el contenido del archivo de salida
-
-    #print(contenido)
-
-    #Retorno la salida y el contenido del archivo
-    return jsonify({"salida": salida, "mensaje":"Envio exitosa"}), 200
 
 
 if __name__ == '__main__':

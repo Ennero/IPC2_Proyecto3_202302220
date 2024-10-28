@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 import poo
 import re
 import os
+import unicodedata
 
 #Variables globales
 entrada = ""
@@ -15,8 +16,8 @@ listaNegativos=[] #Lista de palabras negativas
 listaMensajes=[] #Lista de mensajes
 listaFechas = [] #Lista de fechas
 
-#             Lugar y fecha: (Guatemala),       (01/04/2022)         (15:43)      Usuario: (map0003@usac.edu) Red social:   (Twitter) ([todo el texto])
-patron = r'\s*Lugar\s+y\s+fecha:\s+(\S+),\s*(\d{2}/\d{2}/\d{4})\s+(\d{2}:\d{2})\s+Usuario:\s+(\w+@\w+\.\w+)\s+Red\s+social:\s+(\w+)\s+(.*)'
+#             Lugar y fecha: (Guatemala),       (01/04/2022)         (15:43)      Usuario:   (map0003@usac.edu.gt)      Red social:   (Twitter) ([todo el texto])
+patron = r'\s*Lugar\s+y\s+fecha:\s+([A-Za-z\s]+),\s*(\d{2}/\d{2}/\d{4})\s+(\d{2}:\d{2})\s+Usuario:\s+(\w+@\w+\.\w+(?:\.\w+)*)\s+Red\s+social:\s+(\w+)\s+(.*)'
 
 def limpiar(): #Función para limpiar las listas globales
     global listaEmpresitas,listaPositivos,listaNegativos,listaMensajes,listaFechas #Variables globales
@@ -38,6 +39,14 @@ def limpiar(): #Función para limpiar las listas globales
     else:
         print("La salida no existe")
 
+def limpiarLite():
+    global listaEmpresitas,listaPositivos,listaNegativos,listaMensajes,listaFechas #Variables globales
+    listaEmpresitas.clear() #Limpiamos la lista de empresas
+    listaPositivos.clear() #Limpiamos la lista de palabras positivas
+    listaNegativos.clear() #Limpiamos la lista de palabras negativas
+    listaMensajes.clear() #Limpiamos la lista de mensajes
+    listaFechas.clear() #Limpiamos la lista de fechas
+
 
 def crearArchivo(entrada): #Función que crea el archivo de entrada
     archivo = open("data/archivo.xml", "w", encoding="utf-8")
@@ -49,7 +58,7 @@ def crearArchivo(entrada): #Función que crea el archivo de entrada
 def procesar():
     global listaEmpresitas,listaPositivos,listaNegativos #Variables globales
 
-
+    limpiarLite() #Limpiamos las listas globales
     try:
         arbol = ET.parse("data/archivo.xml") #Creamos el arbol
         ramas=arbol.getroot() #Obtenemos la raíz del arbol
@@ -117,10 +126,33 @@ def procesar():
     
 #Quitar a futuro lo de limpiar para mantenerse con el tiempo
 
+#Función para normalizar las vocales por todas las posibles opciones
+def normalizar_vocales(palabra):
+    palabra = re.sub(r'[aA]', r'[aáAÁ]', palabra)
+    palabra = re.sub(r'[eE]', r'[eéEÉ]', palabra)
+    palabra = re.sub(r'[iI]', r'[iíIÍ]', palabra)
+    palabra = re.sub(r'[oO]', r'[oóOÓ]', palabra)
+    palabra = re.sub(r'[uU]', r'[uúüUÚÜ]', palabra)
+    return palabra
+
+#Función para quitar las tildes
+def quitar_tildes(palabra):
+    return ''.join((c for c in unicodedata.normalize('NFD', palabra) if unicodedata.category(c) != 'Mn'))
+
+
 #Función para analizar los mensajes, encontrar sentimientos y empresas con sus servicios
 def analizarMensaje(text):
     global listaEmpresitas,listaPositivos,listaNegativos,patron
 
+    ''' for i in listaEmpresitas:
+        print("Empresita")
+        print(i.nombre)
+        print("Servicios")
+        for j in i.servicios:
+            print(j.nombre)
+            print(j.alias)'''
+
+    #print(text)
     #Buscamos el patrón en el texto
     resultado=re.search(patron,text,re.S)
 
@@ -129,24 +161,34 @@ def analizarMensaje(text):
         fecha=resultado.group(2) #Obtenemos la fecha
         hora=resultado.group(3) #Obtenemos la hora
         usuario=resultado.group(4) #Obtenemos el usuario
+
+        #print(usuario)
+
         redSocial=resultado.group(5) #Obtenemos la red social
         texto=resultado.group(6) #Obtenemos el texto
 
     else:
         print ("No se encontraron coincidencias") 
 
+    text=quitar_tildes(text) #Quitamos las tildes
+    #print(text)
     cuentaPositivos=0 #Contador de palabras positivas
     cuentaNegativos=0 #Contador de palabras negativas
 
     for i in listaPositivos: #Iteramos sobre las palabras positivas
+        #posi=normalizar_vocales(i) #Normalizamos las vocales
+        #print(i)
         rege=r'\b' + i.replace(' ', r'\s*') + r'\b' #Expresión regular
-        
-        cuentaPositivos+=len(re.findall(rege,texto)) #Contamos las palabras positivas en el texto
 
+        cuentaPositivos+=len(re.findall(rege,texto, flags=re.IGNORECASE)) #Contamos las palabras positivas en el texto
 
     for i in listaNegativos: #Iteramos sobre las palabras negativas
+        #nega=normalizar_vocales(i)
+        #print(i)
         rege=r'\b' + i.replace(' ', r'\s*') + r'\b'
-        cuentaNegativos+=len(re.findall(rege,texto)) #Contamos las palabras negativas en el texto
+        cuentaNegativos+=len(re.findall(rege,texto, flags=re.IGNORECASE)) #Contamos las palabras negativas en el texto
+
+    #print("Palabras positivas: ",cuentaPositivos,"Palabras negativas: ",cuentaNegativos)
 
     empresitas=[] #Lista de empresas en el mensaje
 
@@ -154,10 +196,10 @@ def analizarMensaje(text):
 
     for i in listaEmpresitas: #Iteramos sobre las empresas
         empresaN=i.nombre
-
+        #print(empresaN)
         #Buscamos la empresa en el texto
-        empresaseta=len(re.findall(r'\b' +empresaN.replace(' ', r'\s*')+ r'\b',texto))
-
+        empresaNormal=normalizar_vocales(empresaN)
+        empresaseta=len(re.findall(r'\b' +empresaNormal.replace(' ', r'\s*')+ r'\b',texto, flags=re.IGNORECASE))
 
         if empresaseta>0: #Si la empresa está en el texto
             listaServicios=[] #Lista de servicios
@@ -165,21 +207,24 @@ def analizarMensaje(text):
             #-------------------------------------
             for j in i.servicios: #Iteramos sobre los servicios
                 servicio=j.nombre #Obtenemos el nombre del servicio
+                servicioNormal=normalizar_vocales(servicio)
                 cuntaAlias=0 #Contador de alias
 
                 #Buscamos el servicio en el texto y lo sumamos al contador
-                cuntaAlias+=len(re.findall(r'\b' +servicio.replace(' ', r'\s*')+ r'\b',texto,re.S))
+                cuntaAlias+=len(re.findall(r'\b' +servicioNormal.replace(' ', r'\s*')+ r'\b',texto,flags=re.IGNORECASE))
 
                 #Iteramos sobre los alias
                 for k in j.alias: 
-
+                    alias=k #Obtenemos el alias
+                    aliasNormal=normalizar_vocales(alias)
                     #Buscamos el alias en el texto y lo sumamos al contador
-                    rege = r'\b' + k.replace(' ', r'\s*') + r'\b'
+                    rege = r'\b' + aliasNormal.replace(' ', r'\s*') + r'\b'
                     #print(rege)
 
-                    #Sumamos al contador el alies, si es que se encuentra
-                    cuntaAlias=cuntaAlias+len(re.findall(str(rege),str(texto),re.DOTALL))
-                
+                    #Sumamos al contador el alias, si es que se encuentra
+                    cuntaAlias=cuntaAlias+len(re.findall(rege,texto,re.IGNORECASE))
+
+                #print("Servicio: ",servicio,"Cantidad: ",cuntaAlias)
                 #Creamos un objeto de la clase Servicinho y sus atributos
                 servicinho=poo.Servicinho(servicio,cuntaAlias)
 
@@ -215,7 +260,7 @@ def analizarMensaje(text):
 def dividirFechas():
     global listaMensajes,listaFechas
 
-
+    print(len(listaMensajes))
     for i in listaMensajes: #Iteramos sobre los mensajes
         fecha=i.fecha #Obtenemos la fecha del mensaje
         repetido=False #Variable para verificar si la fecha está repetida
@@ -355,8 +400,8 @@ def crearArchivoSalida():
                                 for servicioMensajito in empresaMensajito.servicios: #Iteramos sobre los servicios de las empresas
 
                                     if servicioMensajito.nombre==servicinho.nombre: #Si el servicio del mensaje es igual al servicio actual
-                                        print(servicioMensajito.nombre)
-                                        print(cuentaTotal)
+                                        #print(servicioMensajito.nombre)
+                                        #print(cuentaTotal)
                                         if (servicioMensajito.cantidad>0): #Si la cantidad de mensajes del servicio es mayor a 0
                                             cuentaTotal+=1 #Sumamos al contador de palabras totales
                                             if mensajeLL.positivos>mensajeLL.negativos: #Si el mensaje es positivo
@@ -505,8 +550,8 @@ def prueba(mensaje):
         if total==0: total=1 #Si el total es 0, entonces el total es 1
 
         #Creamos las ramas de sentimientos positivos y negativos
-        print(mensajito.positivos)
-        print(total)
+        #print(mensajito.positivos)
+        #print(total)
 
         sentimientosPostivos=ET.SubElement(raiz,"sentimientos_positivos") #Creamos la rama sentimientosPositivos
         sentimientosPostivos.text=str(round((mensajito.positivos/total)*100))+"%" #Agregamos los sentimientos positivos a la rama sentimientosPositivos
