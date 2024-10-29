@@ -73,6 +73,7 @@ def procesar():
 
         for i in ramas.iter('diccionario'):
 
+
             for j in i.iter('sentimientos_positivos'): #Iteramos sobre los sentimientos positivos
                 for k in j.iter('palabra'): #Iteramos sobre las palabras
                     repetido=False
@@ -124,6 +125,8 @@ def procesar():
             for j in i.iter('mensaje'): #Iteramos sobre los mensajes
                 texto=j.text #Obtenemos el texto del mensaje
 
+                #print(listaPositivos,listaNegativos,listaEmpresitas)
+
                 mensaje=analizarMensaje(texto) #Analizamos el mensaje con la subrutina analizarMensaje
             
                 listaMensajes.append(mensaje) #Agregamos el mensaje a la lista de mensajes
@@ -162,7 +165,9 @@ def analizarMensaje(text):
 
     #print(text)
     #Buscamos el patrón en el texto
+    print("-----------------------------------------")
     resultado=re.search(patron,text,re.S)
+    print(text)
 
     if resultado: #primer analisis para separar todo en el mensaje
         lugar=resultado.group(1) #Obtenemos el lugar
