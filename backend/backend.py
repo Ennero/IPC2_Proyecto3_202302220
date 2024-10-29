@@ -111,6 +111,7 @@ def prueba():
         archivo = request.files["archivo"]
         mensaje=archivo.read().decode("utf-8")
         
+        print(mensaje)
         respuesta=b2.prueba(mensaje)
 
         return jsonify({"mensaje": respuesta}), 200
@@ -166,6 +167,15 @@ def graficaEmpresaEnRango1():
         print("---------------------------------------------------")
         print(fechonas)
         return jsonify({"todo": todo,'fechonas':fechonas}), 200
+
+@app.route('/pdf', methods=['POST','GET'])  # Página de inicio
+def pdf():
+
+    print(b2.crearPDF())
+
+    return jsonify({"mensaje": "PDF generado"}), 200
+
+
 
 
 

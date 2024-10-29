@@ -71,8 +71,9 @@ def peticiones(request):
 
         if request.POST.get("pdf"):
             print("PDF")
+            response = requests.get('http://127.0.0.1:5000/pdf') #(basicamente solo indico que se realice el pdf)
 
-            return render(request,"papaya/peticiones.html",{"entrada":entrada,"salida":salida})
+            return render(request,"papaya/peticiones.html",{"entrada":entrada,"salida":salida, "mensaje":response.json()["mensaje"]})
 
 
     #El predefinido siempres será get
@@ -117,10 +118,10 @@ def resumenPorFecha(request):
             data=response.json()["todo"] #Obtengo la respuesta de la API
 
             print(data)
-
+            todo=request.POST.get("todo") #Obtengo la señal de que se quiere ver todo
             #print(valores,label)
             return render(request,'papaya/resumenPorFecha.html',{
-                'fechita':fechita,'empresas':empresas,'data':data})
+                'fechita':fechita,'empresas':empresas,'data':data,'todo':todo})
 
         #Si lo que se envió fue la señal de que se quiere ver una empresa específica
         if request.POST.get("empresa"):
@@ -137,7 +138,7 @@ def resumenPorFecha(request):
 
             #Retorno la plantilla con la fecha, las empresas y los valores de la empresa
             return render(request,'papaya/resumenPorFecha.html',{
-                'fechita':fechita,'empresas':empresas,'data':data})
+                'fechita':fechita,'empresas':empresas,'data':data,'empresi':empresa})
 
     #Si no se envió un POST solicita las fecha
     response = requests.get('http://127.0.0.1:5000/resumenPorFecha') #Consulto a la API
@@ -145,6 +146,7 @@ def resumenPorFecha(request):
     fechas = response.json()["fechas"]#Obtengo las fechas
     return render(request,"papaya/resumenPorFecha.html",{"fechas":fechas})
 
+#Función para el resumen por rango de fecha
 @csrf_exempt
 def resumenPorRangoTipo(request):
     global entradaR,salidaR,fecha2,fecha1,empresasR,fechas2

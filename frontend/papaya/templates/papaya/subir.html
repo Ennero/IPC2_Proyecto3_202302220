@@ -12,16 +12,14 @@
 </head>
 
 <body class="bg-success-subtle position-absolute top-50 start-50 translate-middle">
+    
 
     <div class="card border warning-danger-subtle" style="width: 30rem;">
+        
         <div class="card-body">
                 <h3 align="center" style="color: grey;">Carga de Archivos de Entrada</h3> 
         </div>
-        {% if subido %}
-        <div class="alert alert-success" role="alert">
-            Archivo de entrada cargado exitosamente
-        </div>
-        {% endif %}
+        
         <div class="card-body" align="center"   >
             <form method="POST" enctype="multipart/form-data">
 
@@ -32,16 +30,14 @@
                 <a href="/peticiones" class="btn btn-outline-danger" role="button">Regresar</a>
             </form>
             <br>
-        </div>
+            {% if subido %}
+            <div class="alert alert-light" role="alert">
+                Archivo de entrada cargado exitosamente
+            </div>
+            {% endif %}
+            </div>
     </div>
-
-    <!-- Footer siempre al final -->
-    <br>
-    <footer class="bg-success-subtle text-center text-lg-start py-3">
-        <div class="container">
-            <span class="text-muted">&copy; 2024 Proyecto 3. Todos los derechos reservados.</span>
-        </div>
-    </footer>
+    
 </body>
 
 </html>

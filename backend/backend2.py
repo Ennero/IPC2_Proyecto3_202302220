@@ -4,7 +4,7 @@ import re
 import os
 import unicodedata
 from datetime import datetime
-
+from fpdf import FPDF
 
 #Variables globales
 entrada = ""
@@ -40,6 +40,12 @@ def limpiar(): #Función para limpiar las listas globales
         os.remove("data/salida.xml")
     else:
         print("La salida no existe")
+
+    #Limpiamos el informe
+    if os.path.exists("data/informe.pdf"):
+        os.remove("data/informe.pdf")
+    else:
+        print("El informe no existe")
 
 def limpiarLite():
     global listaEmpresitas,listaPositivos,listaNegativos,listaMensajes,listaFechas #Variables globales
@@ -640,7 +646,6 @@ def obtenerEmpresaEspecifica(fecha,empresa):
 
 #Función para el mensaje de prueba
 def prueba(mensaje):
-
     
         arbol = ET.ElementTree(ET.fromstring(mensaje))  # Se lee el contenido XML desde una cadena
         raiz = arbol.getroot()  # Se obtiene la raíz del árbol
@@ -690,6 +695,78 @@ def prueba(mensaje):
         indent(raiz) #Indentamos el archivo
         return salida #Retornamos el árbol de salida
 #Retorna una cadena
+
+
+#Función para generar un PDF (ya no lo usaré)
+def generarPDF():
+    pdf=FPDF() #Creamos el objeto PDF
+    pdf.add_page() #Agregamos una página
+
+    pdf.set_font("Arial","B",16) #Establecemos la fuente
+    pdf.cell(0, 10, "Informe", ln=True,align='C') #Agregamos un título
+    contenido="" #Contenido del archivo
+    with open("data/salida.xml","r",encoding='utf-8') as archivo: #Abrimos el archivo de salida
+        contenido=archivo.read()
+
+    pdf.set_font("Arial", "", 12)
+    pdf.multi_cell(0, 10, contenido)
+
+    pdf.output('data/informe.pdf') #Generamos el archivo PDF
+    return "Informe creado :)" #Retornamos la ruta del archivo PDF
+
+
+#Función para generar el pdf más bonito
+def crearPDF():
+    pdf=FPDF() #Creamos el objeto PDF
+    pdf.add_page() #Agregamos una página
+
+    pdf.set_font("Arial","B",16) #Establecemos la fuente
+    pdf.cell(0, 10, "Informe", ln=True,align='C') #Agregamos un título
+
+    #Aquí comenzamos a crear el contenido del PDF con arbolitos
+    arbol = ET.parse("data/salida.xml") #Abrimos el archivo XML
+    raiz = arbol.getroot() #Obtenemos la raíz del archivo XML
+    for i in raiz.iter('respuesta'): #Iteramos sobre las respuestas
+        pdf.set_font("Arial","B",14)
+        pdf.cell(0, 10, "Fecha: "+i.find('fecha').text, ln=True)
+        pdf.set_font("Arial","B",13)
+        pdf.cell(0, 10, "   Mensajes", ln=True)
+        pdf.set_font("Arial","",13)
+        pdf.cell(0, 10, "       Total: "+i.find('mensajes').find('total').text, ln=True)
+        pdf.cell(0, 10, "       Positivos: "+i.find('mensajes').find('positivos').text, ln=True)
+        pdf.cell(0, 10, "       Negativos: "+i.find('mensajes').find('negativos').text, ln=True)
+        pdf.cell(0, 10, "       Neutros: "+i.find('mensajes').find('neutros').text, ln=True)
+        pdf.set_font("Arial","B",13)
+        pdf.cell(0, 10, "   Análisis:", ln=True)
+        for j in i.iter('analisis'):
+            for k in j.iter('empresa'):
+                pdf.set_font("Arial","B",12)
+                pdf.cell(0, 10, "       Empresa: "+k.attrib['nombre'], ln=True)
+                pdf.set_font("Arial","B",11)
+                pdf.cell(0, 10, "           Mensajes", ln=True)
+                pdf.set_font("Arial","",10)
+                pdf.cell(0, 10, "               Total: "+k.find('mensajes').find('total').text, ln=True)
+                pdf.cell(0, 10, "               Positivos: "+k.find('mensajes').find('positivos').text, ln=True)
+                pdf.cell(0, 10, "               Negativos: "+k.find('mensajes').find('negativos').text, ln=True)
+                pdf.cell(0, 10, "               Neutros: "+k.find('mensajes').find('neutros').text, ln=True)
+                pdf.set_font("Arial","B",11)
+                pdf.cell(0, 10, "           Servicios", ln=True)
+                
+                for l in k.iter('servicio'):
+                    pdf.set_font("Arial","B",10)
+                    pdf.cell(0, 10, "               Servicio: "+l.attrib['nombre'], ln=True)
+                    pdf.set_font("Arial","B",9)
+                    pdf.cell(0, 10, "                   Mensajes", ln=True)
+                    pdf.set_font("Arial","",8)
+                    pdf.cell(0, 10, "                       Total: "+l.find('mensajes').find('total').text, ln=True)
+                    pdf.cell(0, 10, "                       Positivos: "+l.find('mensajes').find('positivos').text, ln=True)
+                    pdf.cell(0, 10, "                       Negativos: "+l.find('mensajes').find('negativos').text, ln=True)
+                    pdf.cell(0, 10, "                       Neutros: "+l.find('mensajes').find('neutros').text, ln=True)
+
+    pdf.output('data/informe.pdf') #Generamos el archivo PDF
+    os.system("start data/informe.pdf") #Abrimos el archivo PDF
+    return "Informe creado :)" #Retornamos la ruta del archivo PDF
+
 
 
 #dsjfhcdfmlkghdslckgsdhlfkfdlscghkml,cnhdsfckhdkjhgcsdfcnsdfkgvnhdsfnhvkdshcgklsdfhgvnsdkjfnhskdj PROBANDO
