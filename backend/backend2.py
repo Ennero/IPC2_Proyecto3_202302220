@@ -361,7 +361,7 @@ def crearArchivoSalida():
                 
                 if (mensajeL.fecha==fechita.fecha): #Si la fecha del mensaje es igual a la fecha actual
                     for empresaMensaje in mensajeL.empresas: #Iteramos sobre las empresas de los mensajes
-
+                        
                         if empresaMensaje.nombre==emprecita.nombre: #Si la empresa del mensaje es igual a la empresa actual
                             
                             cuentaMensajes+=1 #Sumamos al contador de mensajes
@@ -531,6 +531,54 @@ def obtenerEmpresaEspecificaEnRango1(fecha1,fecha2,empresa):
 
 
     return lista #Retornamos la lista de fechas
+
+#Función para obtener una lista con una lista de fechas por cada fecha dentro del rango
+def obtenerTODOEnRango(fecha1,fecha2):
+    global listaFechas,listaMensajes
+    fechita1=datetime.strptime(fecha1,"%d/%m/%Y").date()
+    fechita2=datetime.strptime(fecha2,"%d/%m/%Y").date()
+    lista=[] #Lista de los positivos y negativos
+    for i in listaFechas: #Iteramos sobre las fechas
+        fechatemp=datetime.strptime(i.fecha,"%d/%m/%Y").date()
+
+        if fechatemp>=fechita1 and fechatemp<=fechita2: #Si la fecha está en el rango
+
+            sentimientosPositivos=0 #Contador de sentimientos positivos
+            sentimientosNegativos=0 #Contador de sentimientos negativos
+            sentimientosNeutros=0 #Contador de sentimientos neutros
+            totalMensajes=0 #Contador de mensajes
+            #print("Fecha: ",i.fecha)
+            for mensaje in i.listaMensajes: #Iteramos sobre los mensajes
+                totalMensajes+=1 #Sumamos al contador de mensajes
+                if mensaje.positivos>mensaje.negativos: #Si el mensaje es positivo
+                    sentimientosPositivos+=1 #Sumamos al contador de sentimientos positivos
+                elif mensaje.negativos>mensaje.positivos: #Si el mensaje es negativo
+                    sentimientosNegativos+=1 #Sumamos al contador de sentimientos negativos
+                else: #Si el mensaje es neutral
+                    sentimientosNeutros+=1 #Sumamos al contador de sentimientos neutros
+            #print("SentimientoPositivo: ",sentimientosPositivos,"SentimientoNegativo: ",sentimientosNegativos,"SentimientoNeutro: ",sentimientosNeutros)
+            listaSentimientos=[totalMensajes,sentimientosPositivos,sentimientosNegativos,sentimientosNeutros] #Lista de los positivos y negativos
+
+            #print("------------------------------------------------")
+            #print(listaSentimientos)
+            lista.append(listaSentimientos) #Agregamos la fecha a la lista de fechas
+    return lista #Retornamos la lista de fechas
+
+#función que retorna una lista de las fecha en un rango establecido
+def obtenerListaFechasRango(fecha1,fecha2):
+    global listaFechas
+    fechita1=datetime.strptime(fecha1,"%d/%m/%Y").date()
+    fechita2=datetime.strptime(fecha2,"%d/%m/%Y").date()
+    lista=[] #Lista de fechas
+    for i in listaFechas: #Iteramos sobre las fechas
+        fechatemp=datetime.strptime(i.fecha,"%d/%m/%Y").date()
+        if fechatemp>=fechita1 and fechatemp<=fechita2: #Si la fecha está en el rango
+            lista.append(i.fecha) #Agregamos la fecha a la lista de fechas
+
+    #print("------------------------------------------------")
+    #print(lista)
+    return lista #Retornamos la lista de fechas
+
 
 
 #Función para obtener la lista de los mensajes de una fecha

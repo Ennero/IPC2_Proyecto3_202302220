@@ -139,13 +139,16 @@ def fecha2():
 @app.route('/graficaTodoEnRango', methods=['POST','GET'])  # Página de inicio
 def graficaTodoEnRango():
     if request.method == "POST":
-        fechita = request.form["fechita"]
+        fecha1 = request.form["fecha1"]
+        fecha2= request.form["fecha2"]
         print("-----------------------")
         #print(fechita)
-        todo=b2.obtenerTodoEnRango(fechita)
+        todo=b2.obtenerTODOEnRango(fecha1,fecha2)
+        fechonas=b2.obtenerListaFechasRango(fecha1,fecha2)
         #print(todo)
+        #print(fechonas)
 
-        return jsonify({"todo": todo}), 200
+        return jsonify({"todo": todo,'fechonas':fechonas}), 200
     
 @app.route('/graficaEmpresaEnRango1', methods=['POST','GET']) 
 def graficaEmpresaEnRango1():
@@ -159,8 +162,10 @@ def graficaEmpresaEnRango1():
         #print(fechita)
         todo=b2.obtenerEmpresaEspecificaEnRango1(fecha1,fecha2,empresa)
         print("lo que llegó al backend",todo)
-
-        return jsonify({"todo": todo}), 200
+        fechonas=b2.obtenerListaFechasRango(fecha1,fecha2)
+        print("---------------------------------------------------")
+        print(fechonas)
+        return jsonify({"todo": todo,'fechonas':fechonas}), 200
 
 
 

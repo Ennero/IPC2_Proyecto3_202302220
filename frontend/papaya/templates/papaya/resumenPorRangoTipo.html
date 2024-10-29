@@ -96,12 +96,15 @@
 
 
 
-                        {% if fecha2 %}
+                    {% if fecha2 %}
                         <br>
                         <form method="POST">
                             <input type="hidden" name="todo" value="todo">
-                            <button type="submit" class="btn btn-outline-success">Analizar todas las empresas</button>
+                            <button type="submit" class="btn btn-outline-success" {% if todo %} disabled {% endif %}>Analizar todas las empresas</button>
                         </form>
+
+                        
+                        {% if not todo %}
                         <br>
                         <form method="POST">
                         <select class="form-select" id="empresa" name="empresa" onchange="this.form.submit()" {% if empresa %} disabled {% endif %}>
@@ -116,7 +119,9 @@
                             {% endif %}
                         </select>
                         </form>
-                        {% endif %}
+                        {%endif%}
+
+                    {% endif %}
 
                     </div>
                 </div>
@@ -128,7 +133,7 @@
                 <div class="card" style="height: 100%;">
                     <div class="card-body text-center">
                         
-                        <div class="overflow-auto border p-3" style="max-height: 535px; background-color: #f8f9fa; width: 38rem;"> <!-- Scrollable area -->
+                        <div class="overflow-auto border p-3" style="max-height: 535px; background-color: #f8f9fa; width: 58rem;"> <!-- Scrollable area -->
                             {% for nombre, datito in data %}
                                 <h1 class="card-title">{{ nombre }}</h1>
                                 <canvas id="grafica_{{nombre}}" style="max-width: 1000px; max-height: 800px;"></canvas>

@@ -69,6 +69,12 @@ def peticiones(request):
             salida = response.json()["salida"] #Obtengo la respuesta de la API            
             return render(request,"papaya/peticiones.html",{"entrada":entrada,"salida":salida,"mensaje":response.json()["mensaje"]})
 
+        if request.POST.get("pdf"):
+            print("PDF")
+
+            return render(request,"papaya/peticiones.html",{"entrada":entrada,"salida":salida})
+
+
     #El predefinido siempres será get
     return render(request,"papaya/peticiones.html",{"entrada":entrada,"salida":salida})
 
@@ -176,34 +182,30 @@ def resumenPorRangoTipo(request):
 
         #Si lo que se envió fue la señal de que se quiere ver todo
         if request.POST.get("todo"):
-
+            todo = request.POST.get("todo") #Obtengo la señal de que se quiere ver todo
             #Envio la fecha a la API
-            response = requests.post("http://127.0.0.1:5000/graficaTodoEnRango",data={'fechita': fechita}) #Envio la fecha a la API
+            response = requests.post("http://127.0.0.1:5000/graficaTodoEnRango",data={'fecha1': fecha1, 'fecha2':fecha2}) #Envio la fecha a la API
             data=response.json()["todo"] #Obtengo la respuesta de la API
+            fechonas=response.json()["fechonas"] #Obtengo la lista con las fechas
+            dupla=list(zip(fechonas,data)) #Creo una dupla con ambas
+            print("Esto llegó al frontend",dupla) #Imprimo la dupla
+            return render(request,'papaya/resumenPorRangoTipo.html',{'fecha1':fecha1,'fecha2':fecha2,'data':dupla,'todo':todo})
 
-            print(data)
-
-            #print(valores,label)
-            return render(request,'papaya/resumenPorFecha.html',{
-                'fechita':fechita,'empresas':empresas,'data':data})
-
+        #Si lo que se envió fue la señal de que se quiere ver una empresa específica
         if request.POST.get("empresa"):
             
             empresa = request.POST.get("empresa") #Obtengo la empresa
-            fechonas=fechas2
-            fechonas.insert(0,fecha1)
-
             #Verificar lo nombres de lo que coloque en empresaR
             response=requests.post("http://127.0.0.1:5000/graficaEmpresaEnRango1",data={'fecha1': fecha1, 'fecha2':fecha2,'empresa':empresa})
-            data=response.json()["todo"]
-            print("lo del frontend",data)
-            dupla=list(zip(fechonas,data))
-            
+            data=response.json()["todo"] #Tomo la lista de los valores
+            fechonas=response.json()["fechonas"] #Tomo la lista de las fechas
+            dupla=list(zip(fechonas,data)) #Creo una dupla con ambas
             
             #Lo que obtengo de la dupla
-            print(dupla)
+            print("Lo que llegó al frontend",dupla)
 
-            return render(request,'papaya/resumenPorRangoTipo.html',{'fecha1':fecha1,'fecha2':fecha2,'empresa':empresa,'data':dupla,'fechonas':fechonas})
+            #Lo mismo de siempre pero añadiendo la dupla
+            return render(request,'papaya/resumenPorRangoTipo.html',{'fecha1':fecha1,'fecha2':fecha2,'empresa':empresa,'data':dupla})
 
 
 

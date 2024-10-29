@@ -62,7 +62,12 @@
                             <li><a class="dropdown-item" href="/consulta">Consultar Datos</a></li>
                             <li><a class="dropdown-item" href="/resumenPorFecha">Resumen de clasificación por fecha</a></li>
                             <li><a class="dropdown-item" href="/resumenPorRangoTipo">Resumen por rango de fechas</a></li>
-                            <li><a class="dropdown-item" target="/d">Reporte en PDF</a></li>
+                            <li>
+                                <form method="POST" class="me-2">
+                                    <input type="hidden" name="pdf" value="pdf">
+                                    <button type="submit" class="dropdown-item">Reporte en PDF</button>
+                                </form>
+                            </li>
                             <li><a class="dropdown-item" href="/pruebaMensaje">Prueba de mensaje</a></li>
                         </ul>
                     </div>
