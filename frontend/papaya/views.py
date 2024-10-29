@@ -220,8 +220,6 @@ def resumenPorRangoTipo(request):
     #print(fechas)
     return render(request,"papaya/resumenPorRangoTipo.html",{"fechas":fechas})
 
-
-
 #Esta es la página para realizar al prueba de mensaje
 @csrf_exempt
 def pruebaMensaje(request):
@@ -242,9 +240,6 @@ def pruebaMensaje(request):
     return render(request,"papaya/pruebaMensaje.html")
 
 #Esta es para el resumen por rango de fecha
-
-
-
 
 #Esta es solo para redirigirmela a la página de peticiones
 @csrf_exempt

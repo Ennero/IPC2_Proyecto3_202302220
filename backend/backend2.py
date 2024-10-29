@@ -720,7 +720,7 @@ def crearPDF():
     pdf=FPDF() #Creamos el objeto PDF
     pdf.add_page() #Agregamos una página
 
-    pdf.set_font("Arial","B",16) #Establecemos la fuente
+    pdf.set_font("Arial","B",18) #Establecemos la fuente
     pdf.cell(0, 10, "Informe", ln=True,align='C') #Agregamos un título
 
     #Aquí comenzamos a crear el contenido del PDF con arbolitos
