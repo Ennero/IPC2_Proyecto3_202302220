@@ -1,68 +1,40 @@
-<div align="center">
+# Clasificación de mensajes XML con Flask y Django
 
-# 📈 Big Data Simulator & Sentiment Analysis Engine in Python (IPC2)
+Aplicación para cargar diccionarios y mensajes XML, clasificar texto y consultar resúmenes por empresa/fecha, gráficas y documentos PDF. Flask procesa la información y Django ofrece las vistas.
 
-**Motor de clasificación y análisis de mensajes mediante procesamiento de texto y estructuras de datos jerárquicas en Python.**
+## Requisitos
 
-[![Language](https://img.shields.io/badge/Language-Python-blue?style=for-the-badge)](https://github.com/Ennero/IPC2_Proyecto3_202302220)
-[![Course](https://img.shields.io/badge/Course-Introducción%20a%20la%20Programación%20y%20Computación%202-003366?style=for-the-badge)](https://ingenieria.usac.edu.gt/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+Python 3.12 o superior y requirements.txt. Ejecutar backend desde backend/ y frontend desde frontend/ para conservar sus rutas relativas.
 
-</div>
+## Ejecución
 
----
+Los comandos parten de la raíz del repositorio, salvo donde se indica otra terminal.
 
+```bash
+python -m pip install -r requirements.txt
+cd backend
+python backend.py
 
-## 📌 Descripción General
-
-Este repositorio contiene la implementación y entrega de **📈 Big Data Simulator & Sentiment Analysis Engine in Python (IPC2)**, desarrollado en el curso de **Introducción a la Programación y Computación 2** en la Universidad de San Carlos de Guatemala.
-
-- **Objetivo:** Motor de clasificación y análisis de mensajes mediante procesamiento de texto y estructuras de datos jerárquicas en Python.
-- **Stack Principal:** `Python`.
-- **Área:** Ciencias de la Computación, Algoritmos y Desarrollo de Software.
-
----
-
-## 🚀 Características y Componentes
-
-- Implementación modular y buenas prácticas de codificación.
-- Manejo estructurado de datos, control de flujo y validaciones.
-- Documentación y scripts de soporte para compilación o ejecución.
-
----
-
-## 📦 Estructura del Proyecto
-
-```
-IPC2_Proyecto3_202302220/
-├── src/ o archivos de código fuente
-├── docs/ (si aplica)
-├── .gitignore
-├── LICENSE
-└── README.md
+# Otra terminal, desde la raíz:
+cd frontend
+python manage.py migrate
+python manage.py runserver 127.0.0.1:8000
 ```
 
----
+## Recorrido de demostración
 
-## ⚙️ Requisitos y Ejecución
+Abrir http://127.0.0.1:8000 y cargar los XML de entrada/. El frontend se comunica con http://127.0.0.1:5000. Seguir el orden cargar → procesar → consultar para disponer de resultados.
 
-1. Clonar el repositorio:
-   ```bash
-   git clone https://github.com/Ennero/IPC2_Proyecto3_202302220.git
-   cd IPC2_Proyecto3_202302220
-   ```
-2. Ejecutar según el entorno (`Python`):
-   - Consultar los scripts o archivos principales del proyecto para parámetros específicos.
+## Organización
 
----
+Carpetas de la entrega: [`Documetancion/`](Documetancion/), [`backend/`](backend/), [`entrada/`](entrada/), [`frontend/`](frontend/).
 
-## 📄 Licencia
+## Alcance y límites
 
-Este proyecto está bajo la Licencia **MIT**. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+Es un clasificador basado en las reglas y diccionarios de la entrega; no se afirma entrenamiento de un modelo ni capacidad de Big Data. El estado y reportes son locales, sin aislamiento multiusuario.
 
----
+## Contexto y licencia
 
-## 👨‍💻 Autor
+Trabajo académico o de aprendizaje conservado en el portafolio de [Enner Mendizabal](https://github.com/Ennero). Los créditos de los trabajos en grupo se conservan en sus entregas y manuales.
 
-- **Enner Mendizabal** - [@Ennero](https://github.com/Ennero)  
-- *Facultad de Ingeniería, Universidad de San Carlos de Guatemala.*
+Consultar [LICENSE](LICENSE) para la licencia de la raíz. Las dependencias y los componentes con avisos o licencias propios conservan sus condiciones.
